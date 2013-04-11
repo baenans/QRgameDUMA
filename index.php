@@ -28,7 +28,7 @@
 		<div class="jumbotron">
 			<h1>QR Challenge!</h1>
 			<p class="lead">Consigue puntos escaneando los códigos QR que hay repartidos por el pabellón durante la Jornada de Puertas Abiertas.</p>
-			<a class="btn btn-large btn-success" href="/getReader/">Obtener un lector de códigos QR</a>
+			<a class="btn btn-large btn-success" href="./getReader/">Obtener un lector de códigos QR</a>
 		</div>
 
 		<hr>
