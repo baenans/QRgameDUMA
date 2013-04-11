@@ -88,6 +88,7 @@ TODO
 					- [x]:	iOS: QRReader (https://itunes.apple.com/us/app/qr-reader-for-iphone/id368494609?mt=8)
 					- [ ]:	Android:
 					- [ ]:	Windows Phone: 
+		-[ ]: BUSCAR LIBRERÍA QUE GENERE CÓDIGOS QR
 
 
 		-[SQL/PHP/JS]
