@@ -84,26 +84,27 @@ codes -> id[int] type[int] code[varchar32]
 
 		-[ ]: BUSCAR LECTORES QR (que funcionen OFFLINE)
 					
-					- [x]:	iOS: QRReader (https://itunes.apple.com/us/app/qr-reader-for-iphone/id368494609?mt=8)
-					- [x]:	Android: QR Droid (https://play.google.com/store/apps/details?id=la.droid.qr&hl=es)
+					- [x]:	iOS: QRReader (https://itunes.apple.com/us/app/qr-reader-for-iphone/id368494609?mt=8) [FRAN]
+					- [x]:	Android: QR Droid (https://play.google.com/store/apps/details?id=la.droid.qr&hl=es) [FRAN]
 					- [ ]:	Windows Phone: 
 		-[ ]: BUSCAR LIBRERÍA QUE GENERE CÓDIGOS QR
 
 
 		-[SQL/PHP/JS]
 
-			-[x]: CREAR ESTRUCTURA BASE DE DATOS (el query que hay que hacer, por ejemplo: CREATE TABLE players……)
-			-[x]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs
+			-[x]: CREAR ESTRUCTURA BASE DE DATOS [FRAN]
+			-[x]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs [FRAN]
 			-[ ]: CREAR FUNCIONES NECESARIAS PARA LAS SIGUIENTES TAREAS:
 				-[ ]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO ALEATORIO QUE NO EXISTA EN LA TABLA CODES
 				-[ ]: AÑADIR UN JUGADOR
 				-[ ]: AÑADIR UN LUGAR
-				-[ ]: OBTENER UNA LISTA DE LUGARES
-				-[ ]: OBTENER UNA LISTA DE JUGADORES
-				-[ ]: OBTENER UNA LISTA DE DISPAROS (shoots) DE UN JUGADOR Y SUMAR SU PUNTUACIÓN
+				-[ ]: OBTENER INFO DE UN JUGADOR
+				-[ ]: OBTENER UN ARRAY DE LUGARES
+				-[ ]: OBTENER UN ARRAY DE JUGADORES
+				-[ ]: OBTENER UN ARRAY DE DISPAROS (shoots) DE UN JUGADOR DEVOLVER LA SUMA DE SU PUNTUACIÓN
 				-[ ]: OBTENER LA LISTA DE TODOS LOS JUGADORES Y DE TODOS LOS DISPAROS, SUMAR LAS PUNTUACIONES DE TODOS LOS JUGADORES Y ORDENARLAS (Crear ranking)
-				-[ ]: EFECTUAR DISPARO (anotar codigo en la tabla shoots, buscar la relación entre el código y lugar en la tabla codes y devolver un array con la puntuación, información sobre el )
-				-[ ]: AÑADIR UN REGISTRO A LA LISTA DISPAROS
+				-[x]: EFECTUAR DISPARO [FRAN]
+
 			-[ ]: CREA UNA FUNCIÓN QUE INTRODUZCA DATOS DE PRUEBA (LLAMANDO A LAS FUNCIONES DISEÑADAS ANTERIORMENTE)
 
 			-[ ]: [/getReader/index.php] HACER QUE LA PÁGINA REDIRIJA A CADA USUARIO A LA WEB DONDE PUEDE DESCARGAR CADA LECTOR QR (si hay manera de hacer que se abra en su store, guay)
@@ -114,8 +115,8 @@ codes -> id[int] type[int] code[varchar32]
 
 		-[HTML/CSS]
 			
-			-[ ]: CREAR UNA “PLANTILLA” ESTANDAR PARA TODAS LAS PÁGINAS (responsive[dos versiones: escritorio y movil])
-			-[ ]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR
+			-[x]: CREAR ESTILO PRINCIPAL [DANI]
+			-[x]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR [DANI]
 			-[ ]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
 			-[ ]: [/register/#codigo] CREAR PANTALLA QUE MUESTRE "USUARIO nombre REGISTRADO EN EL JUEGO"
 			-[ ]: [/admin/index.php] CREA UN PANEL DE ADMINISTRACIÓN
