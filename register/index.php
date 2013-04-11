@@ -49,7 +49,7 @@
 			<label class="checkbox">
 				<input type="checkbox" value="twitter"> Twittero
 			</label>
-			<button class="btn btn-large btn-primary" type="submit">Sign in</button>
+			<button class="btn btn-large btn-primary" type="submit">Registrar</button>
 		</form>
 	</div> <!-- /container -->
 </body>
