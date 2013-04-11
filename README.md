@@ -123,7 +123,7 @@ codes -> id[int] type[int] code[varchar32]
 			-[x]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR [DANI]
 			-[ ]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
 			-[ ]: [/register/#codigo] CREAR PANTALLA QUE MUESTRE "USUARIO nombre REGISTRADO EN EL JUEGO"
-			-[ ]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO [DANI]
+			-[x]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO [DANI]
 			-[ ]: [/admin/index.php] CREA UN PANEL DE ADMINISTRACIÓN
 			-[ ]: [/user/index.php] MUESTRA INFORMACIÓN SOBRE EL USUARIO Y SU PUNTUACIÓN
 			-[ ]: [/shoot/index.php] MUESTRA INFORMACIÓN SOBRE UN DISPARO REALIZADO [HAS GANADO x PUNTOS/YA HABÍAS DISPARADO AQUÍ]
