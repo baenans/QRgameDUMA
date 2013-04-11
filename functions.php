@@ -90,10 +90,44 @@ function installTables(){
 
 }
 
+function generateCode($from){
+	//Genera códigos aleatorios que no estén en la tabla codes a partir de un dato
+	$mysqli=conectaDB();
+
+	do{
+		$newCode=md5($from + rand());
+		$result=$mysqli->query("SELECT * FROM `codes` WHERE `code` = '".$newCode."'");
+	} while ($result->num_rows!=0);
+
+	$mysqli->close();
+	return $newCode;
+}
+
+function addPlayer($user,$phone,$twitter){
+	$mysqli = conectaDB();
+	if(!$mysqli->query("INSERT INTO `players` (`id` ,`user` ,`phone` ,`twitter`) VALUES (NULL , '".$user."', '".$phone."', '".$twitter."');")){
+		$id=-1;
+	} else {
+		$id=$mysqli->insert_id;
+	}
+	$mysqli->close();
+	return $id;
+}
+
+function addPlace($name){
+	$mysqli = conectaDB();
+	if(!$mysqli->query("INSERT INTO `places` (`id` ,`name`) VALUES (NULL , '".$name."');")){
+		$id=-1;
+	} else {
+		$id=$mysqli->insert_id;
+	}
+	$mysqli->close();
+	return $id;
+}
+
 function getPlayer($id){
 	$return=-1;
-	$mysqli=conectaDB();
-	$result=$mysqli->query("SELECT user, phone, twitter FROM players WHERE id=".$id);
+	$result=executeQuery("SELECT user, phone, twitter FROM players WHERE id=".$id);
 		if ($result->num_rows==1){
 			$object=$result->fetch_object();
 			$return= (object) array('type' 		=> 'user',
@@ -101,38 +135,30 @@ function getPlayer($id){
 									'phone'		=> $object->phone,
 									'twitter'	=> $object->twitter,);
 		}
-	$mysqli->close();
 	return $return;
 }
 
 function getPlace($id){
 $return=-1;
-	$mysqli=conectaDB();
-	$result=$mysqli->query("SELECT name FROM places WHERE id=".$id);
+	$result=executeQuery("SELECT name FROM places WHERE id=".$id);
 		if ($result->num_rows==1){
 			$object=$result->fetch_object();
 			$return= (object) array('type' 		=> 'place',
 									'name' 		=> $object->name,);
 		}
-	$mysqli->close();
 	return $return;
 }
 
 function shoot($uid,$code){
 	/*
-		Errores:
-
-			0: no hay error
-			1: código escaneado incorrecto
-			2: ya ha escaneado este código
-
+		Errores:	0: no hay error
+					1: código escaneado incorrecto
+					2: ya ha escaneado este código
 	*/
 	$error=0;	//Presuponemos que no habrá un error
 
-	//Nos conectamos a la Base de Datos
-	$mysqli=conectaDB();
 	//Obtenemos info del código escaneado
-	$result=$mysqli->query("SELECT type, id FROM codes WHERE code='".$code."'");
+	$result=executeQuery("SELECT type, id FROM codes WHERE code='".$code."'");
 
 	if($result->num_rows==1){
 		//Si hay un resultado en nuestra búsqueda, obtenemos los datos de ese objeto
@@ -150,25 +176,24 @@ function shoot($uid,$code){
 			$score=($object->type==3?100:25);
 		}
 
-		//Guardamos el disparo en la Base de Datos
-		if(!$mysqli->query("INSERT INTO `shoots` (`user` ,`code` ,`score`) VALUES ('".$uid."', '".$code."', '".$score."');")){
-			//Si no se ejecuta correctamente el query, devolvemos el error 2 (porque no se puede introducir una nueva fila en la DB)
-			$error=2;
-		}	
+			//Guardamos el disparo en la Base de Datos
+			if(!executeQuery("INSERT INTO `shoots` (`user` ,`code` ,`score`) VALUES ('".$uid."', '".$code."', '".$score."');")){
+				//Si no se ejecuta correctamente el query, devolvemos el error 2 (porque no se puede introducir una nueva fila en la DB)
+				$error=2;
+			}	
+		
 
 	} else {
 		//Si no hay un registro en la base de datos con ese código, o el número es superior (brainfuck)
 		$error=1;
 	}
 	
-	//Cerramos la conexión con la base de datos
-	$mysqli->close();
 
 	return (object) array(	
 					'error' => $error,
 					'score' => $score, 	//esto está de ejemplo 
 					'info' => $objectInfo, );	//id del lugar/persona donde se ha disparado
 }
-
-
+	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
+	//echo addPlace("Conserjería") . "\n". addPlayer('tutida','666',
 ?>
