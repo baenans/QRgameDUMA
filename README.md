@@ -111,7 +111,7 @@ codes -> id[int] type[int] code[varchar32]
 			-[ ]: CREA UNA FUNCIÓN QUE INTRODUZCA DATOS DE PRUEBA (LLAMANDO A LAS FUNCIONES DISEÑADAS ANTERIORMENTE)
 			-[x]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO QR
 
-			-[ ]: [/getReader/index.php] HACER QUE LA PÁGINA REDIRIJA A CADA USUARIO A LA WEB DONDE PUEDE DESCARGAR CADA LECTOR QR (si hay manera de hacer que se abra en su store, guay)
+			-[x]: [/getReader/index.php] HACER QUE LA PÁGINA REDIRIJA A CADA USUARIO A LA WEB DONDE PUEDE DESCARGAR CADA LECTOR QR (si hay manera de hacer que se abra en su store, guay)
 			-[ ]: [/ranking/index.php] REPRESENTAR EL RANKING
 			-[ ]: [/ranking/index.php][JS/HTML] HACER QUE LA PÁGINA SE ACTUALICE CADA x TIEMPO
 			-[ ]: [/register/#codigo] GUARDA UNA COOKIE DE 7 HORAS CON EL CÓDIGO DE USUARIO
