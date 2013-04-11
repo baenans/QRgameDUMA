@@ -54,6 +54,8 @@ Ejemplos:
 	//
 */
 
+//Así se hace un IMPORT:
+include("functions.database.php");
 
 function shoot($user_id,$code){
 

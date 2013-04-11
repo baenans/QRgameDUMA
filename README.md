@@ -12,9 +12,11 @@
 
 Las puntuaciones serán: 
 
-	- PERSONA: 75pts
-	- PUESTO: 25pts
-	- PEGATINAS ESCONDIDAS: 100pts
+
+	- QR EN PERSONA: 75pts
+	- QR EN PUESTO: 25pts
+	- QR POR TODO EL PABELLÓN: 100pts
+
 
 	Y hay que obtener un mínimo de 300pts (visitar 12 puestos, encontrar 3 pegatinas escondidas, disparar a 4 personas o cualquier permutación de las anteriores).
 
