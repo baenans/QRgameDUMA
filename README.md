@@ -4,23 +4,23 @@
 
 #¿DE QUÉ VA EL JUEGO?
 
-		-> Explicación general
+	- Explicación general
 			
-			El juego es sencillo. Te registras en el mostrador de Informática y debes ir consiguiendo puntos para conseguir un premio (una camiseta, por ejemplo). Además, habrá un ranking donde salgan los usuarios con más puntos y tal.
+		El juego es sencillo. Te registras en el mostrador de Informática y debes ir consiguiendo puntos para conseguir un premio (una camiseta, por ejemplo). Además, habrá un ranking donde salgan los usuarios con más puntos y tal.
 
-		-> Puntuaciones
+	- Puntuaciones
 
-			Las puntuaciones serán: 
+		Las puntuaciones serán: 
 
-					- PERSONA: 75pts
-					- PUESTO: 25pts
-					- PEGATINAS ESCONDIDAS: 100pts
+			- PERSONA: 75pts
+			- PUESTO: 25pts
+			- PEGATINAS ESCONDIDAS: 100pts
 
-			Y hay que obtener un mínimo de 300pts (visitar 12 puestos, encontrar 3 pegatinas escondidas, disparar a 4 personas o cualquier permutación de las anteriores).
+		Y hay que obtener un mínimo de 300pts (visitar 12 puestos, encontrar 3 pegatinas escondidas, disparar a 4 personas o cualquier permutación de las anteriores).
 
-		-> Tecnologías usadas:
+	- Tecnologías usadas:
 
-			HTML, CSS, PHP, (MySQL/SQLite)?, JS?
+		HTML, CSS, PHP, (MySQL/SQLite)?, JS?
 
 
 #DIRECTORIOS
