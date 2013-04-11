@@ -110,26 +110,44 @@ function generateQR($data){
 	return $filename;
 }
 
-function addPlayer($user,$phone,$twitter){
-	$mysqli = conectaDB();
-	if(!$mysqli->query("INSERT INTO `players` (`id` ,`user` ,`phone` ,`twitter`) VALUES (NULL , '".$user."', '".$phone."', '".$twitter."');")){
-		$id=-1;
-	} else {
-		$id=$mysqli->insert_id;
+function whoIs($code){
+	$return=-1;
+	$result=executeQuery("SELECT id FROM codes WHERE code='".$code."'");
+	if ($result->num_rows==1){
+		$object=$result->fetch_object();
+		$return=$object->id;
 	}
-	$mysqli->close();
-	return $id;
+	return $return;
 }
 
-function addPlace($name){
+function setUserCookie($code){
+	$whois=whoIs($code);
+	setcookie("user", whoIs($code), time()+25200);
+}
+function addPlayer($user,$phone,$twitter){
 	$mysqli = conectaDB();
-	if(!$mysqli->query("INSERT INTO `places` (`id` ,`name`) VALUES (NULL , '".$name."');")){
+	if(!$mysqli->query("INSERT INTO `players` (`id` ,`user` ,`phone` ,`twitter`) VALUES (NULL , '".utf8_decode($user)."', '".$phone."', '".$twitter."');")){
 		$id=-1;
 	} else {
 		$id=$mysqli->insert_id;
+		$code=generateCode($id+$user);
+		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`) VALUES ('1', '".$id."', '".$code."');");
 	}
 	$mysqli->close();
-	return $id;
+	return $code;
+}
+
+function addPlace($name, $type){
+	$mysqli = conectaDB();
+	if(!$mysqli->query("INSERT INTO `places` (`id` ,`name`) VALUES (NULL , '".utf8_decode($name)."');")){
+		$id=-1;
+	} else {
+		$id=$mysqli->insert_id;
+		$code=generateCode($id+$name);
+		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`) VALUES ('".$type."', '".$id."', '".$code."');");
+	}
+	$mysqli->close();
+	return $code;
 }
 
 function getPlayer($id){
@@ -202,6 +220,7 @@ function shoot($uid,$code){
 					'info' => $objectInfo, );	//id del lugar/persona donde se ha disparado
 }
 	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
-	//echo addPlace("Conserjería") . "\n". addPlayer('tutida','666',
-	generateQR("http://qea.me");
+	//echo addPlace(utf8_decode("Conserjería"),2) . "\n". addPlayer('tutida','666',true);
+	//generateQR("http://qea.me");
 ?>
+
