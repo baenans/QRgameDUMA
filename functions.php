@@ -210,6 +210,8 @@ function calculateScoreOfUser($user) {
 	foreach($aScore as $scores) {
 		$totalScore += $aScore;
 	}
+
+	return $totalScore;
 }
 
 	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
