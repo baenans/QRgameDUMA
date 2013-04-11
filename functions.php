@@ -106,7 +106,7 @@ function generateCode($from){
 function generateQR($data){
 	include_once("phpqrcode/qrlib.php");
 	$filename = 'GeneratedQR/q'.md5($data).'.png';
-    QRcode::png($data, $filename, 'H', 10, 2);
+    QRcode::png($data, $filename, 'H', 8, 2);
 	return $filename;
 }
 
@@ -221,6 +221,7 @@ function shoot($uid,$code){
 }
 	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
 	//echo addPlace(utf8_decode("Conserjería"),2) . "\n". addPlayer('tutida','666',true);
+	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
 	//generateQR("http://qea.me");
 ?>
 
