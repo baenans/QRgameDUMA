@@ -65,10 +65,10 @@ places -> id[int] name[varchar30]
 	#id-> id de lugar autonumérico 
 	#name->descripción del lugar
 
-shoots -> user[int] shoot[int] score[int]
+shoots -> user[int] code[varchar32] score[int]
 
 	#user-> id del usuario que ha disparado
-	#shoot-> id del objeto/persona disparado(a)
+	#code-> codigo QR del objeto/persona disparado(a)
 	#score-> puntos que ha ganado con el disparo al objeto/persona
 
 codes -> id[int] type[int] code[varchar32]
@@ -92,8 +92,8 @@ codes -> id[int] type[int] code[varchar32]
 
 		-[SQL/PHP/JS]
 
-			-[ ]: CREAR ESTRUCTURA BASE DE DATOS (el query que hay que hacer, por ejemplo: CREATE TABLE players……)
-			-[ ]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs
+			-[x]: CREAR ESTRUCTURA BASE DE DATOS (el query que hay que hacer, por ejemplo: CREATE TABLE players……)
+			-[x]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs
 			-[ ]: CREAR FUNCIONES NECESARIAS PARA LAS SIGUIENTES TAREAS:
 				-[ ]: RESETEAR TABLAS PLAYERS/SHOOTS (DROP TABLE y luego CREATE TABLE, por ejemplo)
 				-[ ]: AÑADIR UN JUGADOR
