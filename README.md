@@ -12,9 +12,11 @@
 
 Las puntuaciones serán: 
 
-	- PERSONA: 75pts
-	- PUESTO: 25pts
-	- PEGATINAS ESCONDIDAS: 100pts
+
+	- QR EN PERSONA: 75pts
+	- QR EN PUESTO: 25pts
+	- QR POR TODO EL PABELLÓN: 100pts
+
 
 	Y hay que obtener un mínimo de 300pts (visitar 12 puestos, encontrar 3 pegatinas escondidas, disparar a 4 personas o cualquier permutación de las anteriores).
 
@@ -63,10 +65,10 @@ places -> id[int] name[varchar30]
 	#id-> id de lugar autonumérico 
 	#name->descripción del lugar
 
-shoots -> user[int] shoot[int] score[int]
+shoots -> user[int] code[varchar32] score[int]
 
 	#user-> id del usuario que ha disparado
-	#shoot-> id del objeto/persona disparado(a)
+	#code-> codigo QR del objeto/persona disparado(a)
 	#score-> puntos que ha ganado con el disparo al objeto/persona
 
 codes -> id[int] type[int] code[varchar32]
@@ -90,8 +92,8 @@ codes -> id[int] type[int] code[varchar32]
 
 		-[SQL/PHP/JS]
 
-			-[ ]: CREAR ESTRUCTURA BASE DE DATOS (el query que hay que hacer, por ejemplo: CREATE TABLE players……)
-			-[ ]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs
+			-[x]: CREAR ESTRUCTURA BASE DE DATOS (el query que hay que hacer, por ejemplo: CREATE TABLE players……)
+			-[x]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs
 			-[ ]: CREAR FUNCIONES NECESARIAS PARA LAS SIGUIENTES TAREAS:
 				-[ ]: RESETEAR TABLAS PLAYERS/SHOOTS (DROP TABLE y luego CREATE TABLE, por ejemplo)
 				-[ ]: AÑADIR UN JUGADOR
