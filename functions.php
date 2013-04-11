@@ -81,11 +81,11 @@ function installTables(){
 						PRIMARY KEY ( `user` , `code` )) 
 						ENGINE = MYISAM ;");
 	executeQuery("CREATE TABLE `codes` (
-						`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 						`type` INT NOT NULL ,
+						`id` INT NOT NULL ,
 						`code` VARCHAR( 32 ) NOT NULL ,
-						UNIQUE (`code`)
-						) ENGINE = MYISAM ;");
+						PRIMARY KEY ( `type` , `id` )) 
+						ENGINE = MYISAM ;");
 
 }
 

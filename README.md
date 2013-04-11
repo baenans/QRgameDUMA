@@ -73,8 +73,8 @@ shoots -> user[int] code[varchar32] score[int]
 
 codes -> id[int] type[int] code[varchar32]
 
-	#id-> id del QR
 	#type-> tipo (1=persona, 2=puesto, 3=escondido)
+	#id-> id del obtejo al que apunta el QR
 	#code-> código dentro del QR
 
 #TODO
@@ -95,7 +95,7 @@ codes -> id[int] type[int] code[varchar32]
 			-[x]: CREAR ESTRUCTURA BASE DE DATOS (el query que hay que hacer, por ejemplo: CREATE TABLE players……)
 			-[x]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs
 			-[ ]: CREAR FUNCIONES NECESARIAS PARA LAS SIGUIENTES TAREAS:
-				-[ ]: RESETEAR TABLAS PLAYERS/SHOOTS (DROP TABLE y luego CREATE TABLE, por ejemplo)
+				-[ ]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO ALEATORIO QUE NO EXISTA EN LA TABLA CODES
 				-[ ]: AÑADIR UN JUGADOR
 				-[ ]: AÑADIR UN LUGAR
 				-[ ]: OBTENER UNA LISTA DE LUGARES
