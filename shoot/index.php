@@ -1,0 +1,3 @@
+<?php
+//	-/shoot/index.php
+?>

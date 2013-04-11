@@ -1,0 +1,3 @@
+<?php
+//	-/getReader/index.php
+?>
