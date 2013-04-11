@@ -4,76 +4,76 @@
 
 #¿DE QUÉ VA EL JUEGO?
 
-	- Explicación general
+- Explicación general
 			
-		El juego es sencillo. Te registras en el mostrador de Informática y debes ir consiguiendo puntos para conseguir un premio (una camiseta, por ejemplo). Además, habrá un ranking donde salgan los usuarios con más puntos y tal.
+	El juego es sencillo. Te registras en el mostrador de Informática y debes ir consiguiendo puntos para conseguir un premio (una camiseta, por ejemplo). Además, habrá un ranking donde salgan los usuarios con más puntos y tal.
 
-	- Puntuaciones
+- Puntuaciones
 
-		Las puntuaciones serán: 
+Las puntuaciones serán: 
 
-			- PERSONA: 75pts
-			- PUESTO: 25pts
-			- PEGATINAS ESCONDIDAS: 100pts
+	- PERSONA: 75pts
+	- PUESTO: 25pts
+	- PEGATINAS ESCONDIDAS: 100pts
 
-		Y hay que obtener un mínimo de 300pts (visitar 12 puestos, encontrar 3 pegatinas escondidas, disparar a 4 personas o cualquier permutación de las anteriores).
+	Y hay que obtener un mínimo de 300pts (visitar 12 puestos, encontrar 3 pegatinas escondidas, disparar a 4 personas o cualquier permutación de las anteriores).
 
-	- Tecnologías usadas:
+- Tecnologías usadas:
 
-		HTML, CSS, PHP, (MySQL/SQLite)?, JS?
+	HTML, CSS, PHP, (MySQL/SQLite)?, JS?
 
 
 #DIRECTORIOS
 	
-	Dependiendo de la ruta que se visite en la web (www.qea.me/(ruta)), se hacen varias acciones.
+Dependiendo de la ruta que se visite en la web (www.qea.me/(ruta)), se hacen varias acciones.
 
-		/ (directorio raíz) -> página explicativa de la actividad con enlace a la página para obtener lector QR
+/ (directorio raíz) -> página explicativa de la actividad con enlace a la página para obtener lector QR
 
-		/ranking -> ranking. No hay más.
+/ranking -> ranking. No hay más.
 
-		/getReader -> página que redirigirá a la store correspondiente dependiendo del SO para obtener un QR
+/getReader -> página que redirigirá a la store correspondiente dependiendo del SO para obtener un QR
 
-		/admin -> Entrada al panel de administración. Aquí se registra a la gente, y se generan los QRs para hacer las pegatinas (de usuarios y de cosas).
+/admin -> Entrada al panel de administración. Aquí se registra a la gente, y se generan los QRs para hacer las pegatinas (de usuarios y de cosas).
 
-				CÓMO ES EL REGISTRO:
+	CÓMO ES EL REGISTRO:
 
-				1. Se pide un nickname (preferentemente nombre de usuario de tuiter), y un teléfono para contactar en caso de que gane algo.
-				2. Se registra en la base de datos y se devuelve un QR con un enlace a /admin/enroll/#codigo, donde #codigo es la id del usuario en la BD, y otro QR con un enlace a /whoami
+	1. Se pide un nickname (preferentemente nombre de usuario de tuiter), y un teléfono para contactar en caso de que gane algo.
+	2. Se registra en la base de datos y se devuelve un QR con un enlace a /admin/enroll/#codigo, donde #codigo es la id del usuario en la BD, y otro QR con un enlace a /whoami
 
-		/register/#codigo -> registra a quien visite esta página una cookie donde le identifique como el usuario id= #código y le da una confirmación
+/register/#codigo -> registra a quien visite esta página una cookie donde le identifique como el usuario id= #código y le da una confirmación
 
-		/user -> esta página es para probar que la cookie se ha registrado, y para que cada usuario vea su puntuación. Se cierra el navegador después de registrarse con el QR de Registro y se abre esta página para comprobar que es la persona que acabamos de registrar.
+/user -> esta página es para probar que la cookie se ha registrado, y para que cada usuario vea su puntuación. Se cierra el navegador después de registrarse con el QR de Registro y se abre esta página para comprobar que es la persona que acabamos de registrar.
 
-		/shoot/#codigo -> quien visita esta página ha disparado al QR de un sitio, persona u/o lugar y gana X puntos. Si ha sido a una persona, se muestra su dirección de twitter (si esta está configurada)
+/shoot/#codigo -> quien visita esta página ha disparado al QR de un sitio, persona u/o lugar y gana X puntos. Si ha sido a una persona, se muestra su dirección de twitter (si esta está configurada)
 
-				#Cada vez que se efectua un disparo añadiremos una entrada a la BD shoots con la id del que ha disparado y la id de lo que ha sido disparado (si este id es de un lugar, el bool person será cero, y si es una persona, uno).
+	#Cada vez que se efectua un disparo añadiremos una entrada a la BD shoots con la id del que ha disparado y la id de lo que ha sido disparado (si este id es de un lugar, el bool person será cero, y si es una persona, uno).
 
 #BASES DE DATOS
 
 
-		players -> id [int] user[varchar30] phone[varchar15] twitter[boolean]
+players -> id [int] user[varchar30] phone[varchar15] twitter[boolean]
 
-			#id: id de usuario autonumérico 
-			#user: nick de twitter o nickname 
-			#phone: número de teléfono
-			#twitter: si el user es un nick de twitter, es true
+	#id: id de usuario autonumérico 
+	#user: nick de twitter o nickname 
+	#phone: número de teléfono
+	#twitter: si el user es un nick de twitter, es true
 
-		places -> id[int] name[varchar30]
+places -> id[int] name[varchar30]
 
-			#id-> id de lugar autonumérico 
-			#name->descripción del lugar
+	#id-> id de lugar autonumérico 
+	#name->descripción del lugar
 
-		shoots -> user[int] shoot[int] score[int]
+shoots -> user[int] shoot[int] score[int]
 
-			#user-> id del usuario que ha disparado
-			#shoot-> id del objeto/persona disparado(a)
-			#score-> puntos que ha ganado con el disparo al objeto/persona
+	#user-> id del usuario que ha disparado
+	#shoot-> id del objeto/persona disparado(a)
+	#score-> puntos que ha ganado con el disparo al objeto/persona
 
-		codes -> id[int] type[int] code[varchar32]
+codes -> id[int] type[int] code[varchar32]
 
-			#id-> id del QR
-			#type-> tipo (1=persona, 2=puesto, 3=escondido)
-			#code-> código dentro del QR
+	#id-> id del QR
+	#type-> tipo (1=persona, 2=puesto, 3=escondido)
+	#code-> código dentro del QR
 
 #TODO
 		
