@@ -90,7 +90,7 @@ function installTables(){
 
 }
 
-function getUser($id){
+function getPlayer($id){
 	$return=-1;
 	$mysqli=conectaDB();
 	$result=$mysqli->query("SELECT user, phone, twitter FROM players WHERE id=".$id);
@@ -142,7 +142,7 @@ function shoot($uid,$code){
 		//Obtenemos la info adicional y asignamos una puntuación
 		if($object->type==1){
 			//Si type==1, es una persona
-			$objectInfo=getUser($object->id);
+			$objectInfo=getPlayer($object->id);
 			$score=75;
 		} else {
 			//Si type!=1, es un lugar
