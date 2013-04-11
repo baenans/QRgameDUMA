@@ -42,6 +42,16 @@
 </head>
 <body>
 	<div class="container">
+		<div class="masthead">
+			<ul class="nav nav-pills pull-right">
+				<li><a href="/">Inicio</a></li>
+				<li><a href="#">Ránking</a></li>
+				<li><a href="#">About</a></li>
+			</ul>
+			<h3 class="muted">ETSI Informática</h3>
+		</div>
+
+		<hr>
 		<form class="form-signin">
 			<h2 class="form-signin-heading">Nuevo participante</h2>
 			<input type="text" class="input-block-level" placeholder="Nick/Twitter" name="nick">

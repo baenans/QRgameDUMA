@@ -20,7 +20,7 @@
 				<li><a href="#">Ránking</a></li>
 				<li><a href="#">About</a></li>
 			</ul>
-			<h3 class="muted">ETSI Informática</h3>
+			<img src="img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3 class="muted">ETSI Informática</h3>
 		</div>
 
 		<hr>
@@ -28,7 +28,7 @@
 		<div class="jumbotron">
 			<h1>QR Challenge!</h1>
 			<p class="lead">Consigue puntos escaneando los códigos QR que hay repartidos por el pabellón durante la Jornada de Puertas Abiertas.</p>
-			<a class="btn btn-large btn-success" href="#">Ver el ránking</a>
+			<a class="btn btn-large btn-success" href="/getReader/">Obtener un lector de códigos QR</a>
 		</div>
 
 		<hr>
@@ -54,7 +54,7 @@
 		<hr>
 
 		<div class="footer">
-		<p>&copy; Escuela Técnica Superior de Ingeniería Informática | UMA 2013</p>
+		<p>&copy; <a href="http://www.informatica.uma.es">Escuela Técnica Superior de Ingeniería Informática</a> | UMA 2013</p>
 		</div>
 
 	</div> <!-- /container -->

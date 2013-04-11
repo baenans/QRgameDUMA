@@ -84,9 +84,10 @@ codes -> id[int] type[int] code[varchar32]
 
 		-[ ]: BUSCAR LECTORES QR (que funcionen OFFLINE)
 					
-					- [x]:	iOS: QRReader (https://itunes.apple.com/us/app/qr-reader-for-iphone/id368494609?mt=8) [FRAN]
-					- [x]:	Android: QR Droid (https://play.google.com/store/apps/details?id=la.droid.qr&hl=es) [FRAN]
-					- [x]:	Windows Phone: QR Code Offline (http://www.windowsphone.com/en-us/store/app/qr-code-offline/3a156888-2f6d-4bad-89f9-fc071a820435) [ALFONSO PALOMINO]
+					- [x]:	iOS: [QRReader](https://itunes.apple.com/us/app/qr-reader-for-iphone/id368494609?mt=8) [FRAN]
+					- [x]:	Android: [QR Droid](https://play.google.com/store/apps/details?id=la.droid.qr&hl=es) [FRAN]
+					- [x]:	Windows Phone: [QR Code Offline](http://www.windowsphone.com/en-us/store/app/qr-code-offline/3a156888-2f6d-4bad-89f9-fc071a820435) [ALFONSO PALOMINO]
+					- [x]:  Blackberry: [QR.arg](http://appworld.blackberry.com/webstore/content/118628/?lang=en&countrycode=ES)
 
 		-[ ]: BUSCAR LIBRERÍA QUE GENERE CÓDIGOS QR
 
@@ -122,6 +123,7 @@ codes -> id[int] type[int] code[varchar32]
 			-[x]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR [DANI]
 			-[ ]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
 			-[ ]: [/register/#codigo] CREAR PANTALLA QUE MUESTRE "USUARIO nombre REGISTRADO EN EL JUEGO"
+			-[ ]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO [DANI]
 			-[ ]: [/admin/index.php] CREA UN PANEL DE ADMINISTRACIÓN
 			-[ ]: [/user/index.php] MUESTRA INFORMACIÓN SOBRE EL USUARIO Y SU PUNTUACIÓN
 			-[ ]: [/shoot/index.php] MUESTRA INFORMACIÓN SOBRE UN DISPARO REALIZADO [HAS GANADO x PUNTOS/YA HABÍAS DISPARADO AQUÍ]
