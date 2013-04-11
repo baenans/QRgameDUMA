@@ -86,7 +86,8 @@ codes -> id[int] type[int] code[varchar32]
 					
 					- [x]:	iOS: QRReader (https://itunes.apple.com/us/app/qr-reader-for-iphone/id368494609?mt=8) [FRAN]
 					- [x]:	Android: QR Droid (https://play.google.com/store/apps/details?id=la.droid.qr&hl=es) [FRAN]
-					- [ ]:	Windows Phone: 
+					- [x]:	Windows Phone: QR Code Offline (http://www.windowsphone.com/en-us/store/app/qr-code-offline/3a156888-2f6d-4bad-89f9-fc071a820435) [ALFONSO PALOMINO]
+
 		-[ ]: BUSCAR LIBRERÍA QUE GENERE CÓDIGOS QR
 
 
@@ -95,17 +96,19 @@ codes -> id[int] type[int] code[varchar32]
 			-[x]: CREAR ESTRUCTURA BASE DE DATOS [FRAN]
 			-[x]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs [FRAN]
 			-[ ]: CREAR FUNCIONES NECESARIAS PARA LAS SIGUIENTES TAREAS:
-				-[ ]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO ALEATORIO QUE NO EXISTA EN LA TABLA CODES
+				-[x]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO ALEATORIO QUE NO EXISTA EN LA TABLA CODES
 				-[x]: AÑADIR UN JUGADOR [FRAN]
 				-[x]: AÑADIR UN LUGAR [FRAN]
-				-[ ]: OBTENER INFO DE UN JUGADOR
+				-[x]: OBTENER INFO DE UN JUGADOR [FRAN]
+				-[x]: OBTENER INFO DE UN LUGAR [FRAN]
 				-[ ]: OBTENER UN ARRAY DE LUGARES
 				-[ ]: OBTENER UN ARRAY DE JUGADORES
-				-[ ]: OBTENER UN ARRAY DE DISPAROS (shoots) DE UN JUGADOR DEVOLVER LA SUMA DE SU PUNTUACIÓN
+				-[ ]: OBTENER LA SUMA DE LAS PUNTUACIONES DE LOS DISPARIOS DE UN JUGADOR
 				-[ ]: OBTENER LA LISTA DE TODOS LOS JUGADORES Y DE TODOS LOS DISPAROS, SUMAR LAS PUNTUACIONES DE TODOS LOS JUGADORES Y ORDENARLAS (Crear ranking)
 				-[x]: EFECTUAR DISPARO [FRAN]
 
 			-[ ]: CREA UNA FUNCIÓN QUE INTRODUZCA DATOS DE PRUEBA (LLAMANDO A LAS FUNCIONES DISEÑADAS ANTERIORMENTE)
+			-[x]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO QR
 
 			-[ ]: [/getReader/index.php] HACER QUE LA PÁGINA REDIRIJA A CADA USUARIO A LA WEB DONDE PUEDE DESCARGAR CADA LECTOR QR (si hay manera de hacer que se abra en su store, guay)
 			-[ ]: [/ranking/index.php] REPRESENTAR EL RANKING
