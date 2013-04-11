@@ -2,8 +2,7 @@
 
 
 
-¿DE QUÉ VA EL JUEGO?
-====================
+#¿DE QUÉ VA EL JUEGO?
 
 		-> Explicación general
 			
@@ -24,8 +23,7 @@
 			HTML, CSS, PHP, (MySQL/SQLite)?, JS?
 
 
-DIRECTORIOS
-===========
+#DIRECTORIOS
 	
 	Dependiendo de la ruta que se visite en la web (www.qea.me/(ruta)), se hacen varias acciones.
 
@@ -50,8 +48,8 @@ DIRECTORIOS
 
 				#Cada vez que se efectua un disparo añadiremos una entrada a la BD shoots con la id del que ha disparado y la id de lo que ha sido disparado (si este id es de un lugar, el bool person será cero, y si es una persona, uno).
 
-BASES DE DATOS
-==============
+#BASES DE DATOS
+
 
 		players -> id [int] user[varchar30] phone[varchar15] twitter[boolean]
 
@@ -77,8 +75,7 @@ BASES DE DATOS
 			#type-> tipo (1=persona, 2=puesto, 3=escondido)
 			#code-> código dentro del QR
 
-TODO
-====
+#TODO
 		
 		INSTALA UN SERVIDOR PARA PROBAR EN TU MÁQUINA LOCAL (http://www.apachefriends.org/es/xampp.html)
 		NO USES la extensión .html, sino .php (AUNQUE TU DOCUMENTO TENGA SÓLO HTML)
@@ -86,7 +83,7 @@ TODO
 		-[ ]: BUSCAR LECTORES QR (que funcionen OFFLINE)
 					
 					- [x]:	iOS: QRReader (https://itunes.apple.com/us/app/qr-reader-for-iphone/id368494609?mt=8)
-					- [ ]:	Android:
+					- [x]:	Android: QR Droid (https://play.google.com/store/apps/details?id=la.droid.qr&hl=es)
 					- [ ]:	Windows Phone: 
 		-[ ]: BUSCAR LIBRERÍA QUE GENERE CÓDIGOS QR
 
