@@ -55,7 +55,11 @@ Ejemplos:
 */
 
 //Así se hace un IMPORT:
+<<<<<<< HEAD
+include("ignore/functions.database.php");
+=======
 include("./ignore/functions.database.php");
+>>>>>>> d1189a704078343392e48a3c280cbcfe3426768a
 
 function installTables(){
 	
@@ -230,6 +234,11 @@ function calculateScoreOfUser($user) {
 	}
 
 	return $totalScore;
+}
+
+function scoreOfUser($uid) {
+	$nick = executeQuery("SELECT user FROM players WHERE id='".$uid."'");
+	$score = calculateScoreOfUser($uid);
 }
 
 	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
