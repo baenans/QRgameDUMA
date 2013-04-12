@@ -5,9 +5,9 @@
 		//Datos de la conexion con la base de datos
 
 		$host=	"localhost";		//direccion de la base de datos
-		$user=	"root"; 	//usuario de la base de datos
+		$user=	""; 	//usuario de la base de datos
 		$pass=	"";		//clave de la base de datos
-		$db=	"qrchallenge";		//nombre de la base de datos
+		$db=	"";		//nombre de la base de datos
 
 
 		$mysqli = new mysqli($host, $user, $pass, $db);
