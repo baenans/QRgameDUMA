@@ -111,7 +111,7 @@ codes -> id[int] type[int] code[varchar32]
 
 			-[x]: [/getReader/index.php] HACER QUE LA PÁGINA REDIRIJA A CADA USUARIO A LA WEB DONDE PUEDE DESCARGAR CADA LECTOR QR (si hay manera de hacer que se abra en su store, guay)
 			-[x]: [/ranking/index.php] REPRESENTAR EL RANKING
-			-[ ]: [/ranking/index.php][JS/HTML] HACER QUE LA PÁGINA SE ACTUALICE CADA x TIEMPO
+			-[x]: [/ranking/index.php][JS/HTML] HACER QUE LA PÁGINA SE ACTUALICE CADA x TIEMPO
 			-[ ]: [/register/#codigo] GUARDA UNA COOKIE DE 7 HORAS CON EL CÓDIGO DE USUARIO <- problemas
 
 
