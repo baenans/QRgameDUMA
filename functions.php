@@ -87,7 +87,7 @@ function installTables(){
 						`type` INT NOT NULL ,
 						`id` INT NOT NULL ,
 						`code` VARCHAR( 32 ) NOT NULL ,
-						PRIMARY KEY ( `type` , `id` ) ,
+						PRIMARY KEY ( `type` , `id`) ,
 						UNIQUE (`code`)) 
 						ENGINE = MYISAM ;");
 
@@ -265,24 +265,37 @@ function scoreOfAll(){
 
 	$result=executeQuery("SELECT user, sum(score) 'points' FROM shoots GROUP BY user ORDER BY sum(score) DESC");
 
-	while ($object=$result->fetch_object()) {
-		$scores[$object->user]=$object->points;
-	}
 
-	$i=1;
+ 	if($result->num_rows>0){
+		while ($object=$result->fetch_object()) {
+			$scores[$object->user]=$object->points;
+		}
 
-	foreach ($scores as $user => $score) {
-		$return[]=(object) array(	'order' => $i++,
+		$i=1;
+
+		foreach ($scores as $user => $score) {
+			$return[]=(object) array(	'order' => $i++,
 									'nick' => $players[$user]->user ,
 									'twitter' => $players[$user]->twitter ,
 									'score' => $score , );
+			}
 	}
 	return $return;
+}
+function eraseQRs($path="../"){
+	$dir=$path."GeneratedQR/";
+	$directorio=opendir($dir); 
+	while ($archivo = readdir($directorio)){
+		if(($archivo!='index.php')&&($archivo!='eraseQR.php')&&$archivo!='.'&&$archivo!='..'){
+			unlink($dir.$archivo);
+		}
+	}
 }
 	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
 	//echo addPlace(utf8_decode("Conserjería"),2) . "\n". addPlayer('tutida','666',true);
 	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
 	//generateQR("http://qea.me");
 	//scoreOfAll();
+installTables();
 
 ?>

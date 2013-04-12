@@ -1,6 +1,9 @@
 <?php
 //	-/admin/index.php
 include("../functions.php");
+
+//Borramos los QR que hayan podido ser generados anteriormente
+eraseQRs();
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,9 +38,14 @@ include("../functions.php");
         </thead>
         <tbody>
           <?php
-            foreach(getAllUsers() as $row) {
+
+          $users=getAllUsers();
+          if (count($users)>0){
+          	foreach($users as $row) {
               echo "<tr><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> user."'>@".$row -> user."</a>":$row -> user) . "</td><td>" . $row -> phone . "</td></tr>";
             }
+          }
+            
           ?>
         </tbody>
       </table>
@@ -52,8 +60,12 @@ include("../functions.php");
         </thead>
         <tbody>
           <?php
-            foreach(getAllPlaces() as $row) {
-              echo "<tr><td>". utf8_encode($row -> name) . "</td></tr>";
+
+          	$places=getAllPlaces();
+          	if(count($places)>0){
+            	foreach(getAllPlaces() as $row) {
+              	echo "<tr><td>". utf8_encode($row -> name) . "</td></tr>";
+            	}
             }
           ?>
         </tbody>

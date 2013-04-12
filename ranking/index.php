@@ -36,9 +36,12 @@
         </thead>
         <tbody>
           <?php
-            foreach(scoreOfAll() as $row) {
-              echo "<tr><td>" . $row -> order . "</td><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> nick."'>".$row -> nick."</a>":$row -> nick) . "</td><td>" . $row -> score . "</td></tr>";
-            }
+          $scoreOfAll=scoreOfAll();
+          if(count($scoreOfAll)>0){
+              foreach($scoreOfAll as $row) {
+                echo "<tr><td>" . $row -> order . "</td><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> nick."'>".$row -> nick."</a>":$row -> nick) . "</td><td>" . $row -> score . "</td></tr>";
+              }
+          }
           ?>
         </tbody>
       </table>
