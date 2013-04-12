@@ -55,11 +55,8 @@ Ejemplos:
 */
 
 //Así se hace un IMPORT:
-<<<<<<< HEAD
+
 include("ignore/functions.database.php");
-=======
-include("./ignore/functions.database.php");
->>>>>>> d1189a704078343392e48a3c280cbcfe3426768a
 
 function installTables(){
 	
@@ -159,10 +156,10 @@ function getPlayer($id){
 	$result=executeQuery("SELECT user, phone, twitter FROM players WHERE id=".$id);
 		if ($result->num_rows==1){
 			$object=$result->fetch_object();
-			$return= (object) array('type' 		=> 'user',
-									'user' 		=> $object->user, 
-									'phone'		=> $object->phone,
-									'twitter'	=> $object->twitter,);
+			$return= (object) array(	'type' 		=> 'user',
+						'user' 		=> $stuff->user, 
+						'phone'		=> $stuff->phone,
+						'twitter'	=> $stuff->twitter,);
 		}
 	return $return;
 }
@@ -229,22 +226,43 @@ function calculateScoreOfUser($user) {
 	
 	$totalScore = 0;
 
-	foreach($aScore as $scores) {
-		$totalScore += $aScore;
+	while ($aScore=$scores->fetch_object()){
+			$totalScore += $aScore;
 	}
 
 	return $totalScore;
 }
 
-function scoreOfUser($uid) {
-	$nick = executeQuery("SELECT user FROM players WHERE id='".$uid."'");
-	$score = calculateScoreOfUser($uid);
-}
+function scoreOfAll(){
 
+	$result=executeQuery("SELECT id, user, twitter FROM players");
+
+	while ($object=$result->fetch_object()) {
+		$players[$object->id]=(object)  array(	'user' => $object->user, 
+												'twitter' => $object->twitter,);;
+	}
+
+	$result=executeQuery("SELECT user, sum(score) 'points' FROM shoots GROUP BY user ORDER BY sum(score) DESC");
+
+	while ($object=$result->fetch_object()) {
+		$scores[$object->user]=$object->points;
+	}
+
+	$i=1;
+
+	foreach ($scores as $user => $score) {
+		$return[]=(object) array(	'order' => $i++,
+									'nick' => $players[$user]->user ,
+									'twitter' => $players[$user]->twitter ,
+									'score' => $score , );
+	}
+	return $return;
+}
 	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
 	//echo addPlace(utf8_decode("Conserjería"),2) . "\n". addPlayer('tutida','666',true);
 	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
 	//generateQR("http://qea.me");
+	//scoreOfAll();
 
 ?>
 
