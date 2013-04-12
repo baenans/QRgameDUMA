@@ -1,5 +1,6 @@
 <?php
 //	-/ranking/index.php
+  include("../functions.php");
 ?>
 <!DOCTYPE html>
 <html>
