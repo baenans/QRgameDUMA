@@ -8,6 +8,5 @@ if(isset($_SESSION['uid'])){
 
 }
 
-generateQR("http://franbaena.local/juego/user",$type=3,$whereAmI="../");
 
 ?>
