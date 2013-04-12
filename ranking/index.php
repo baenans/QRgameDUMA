@@ -1,6 +1,6 @@
 <?php
 //	-/ranking/index.php
-  include("../functions.php");
+  //include("../functions.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,6 +25,7 @@
     </div>
 
     <hr>
+      <h1>Ránking</h1>
       <table class="table table-striped">
         <thead>
           <tr>
