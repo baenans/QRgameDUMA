@@ -36,19 +36,12 @@
         </thead>
         <tbody>
           <?php
-<<<<<<< HEAD
-            //$scores = scoreOfAll();
-            /*foreach($scores as $row) {
-              echo "<tr><td>" . $row -> number . "</td><td>" . $row -> nick . "</td><td>" . $row -> score . "</td></tr>";
-            }*/
-=======
           $scoreOfAll=scoreOfAll();
           if(count($scoreOfAll)>0){
               foreach($scoreOfAll as $row) {
                 echo "<tr><td>" . $row -> order . "</td><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> nick."'>".$row -> nick."</a>":$row -> nick) . "</td><td>" . $row -> score . "</td></tr>";
               }
           }
->>>>>>> 03107ce4da0cc97a4a7d88dc7d37c414ecf6cca8
           ?>
         </tbody>
       </table>
