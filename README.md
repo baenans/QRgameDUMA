@@ -110,18 +110,17 @@ codes -> id[int] type[int] code[varchar32]
 			-[x]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO QR
 
 			-[x]: [/getReader/index.php] HACER QUE LA PÁGINA REDIRIJA A CADA USUARIO A LA WEB DONDE PUEDE DESCARGAR CADA LECTOR QR (si hay manera de hacer que se abra en su store, guay)
-			-[ ]: [/ranking/index.php] REPRESENTAR EL RANKING
+			-[x]: [/ranking/index.php] REPRESENTAR EL RANKING
 			-[ ]: [/ranking/index.php][JS/HTML] HACER QUE LA PÁGINA SE ACTUALICE CADA x TIEMPO
-			-[ ]: [/register/#codigo] GUARDA UNA COOKIE DE 7 HORAS CON EL CÓDIGO DE USUARIO
+			-[ ]: [/register/#codigo] GUARDA UNA COOKIE DE 7 HORAS CON EL CÓDIGO DE USUARIO <- problemas
 
 
 		-[HTML/CSS]
 			
 			-[x]: CREAR ESTILO PRINCIPAL 
 			-[x]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR 
-			-[ ]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
-			-[ ]: [/register/#codigo] CREAR PANTALLA QUE MUESTRE "USUARIO nombre REGISTRADO EN EL JUEGO"
+			-[x]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
+			-[ ]: [/register/user/index.php] CREAR PANTALLA QUE MUESTRE DATOS SOBRE EL USUARIO
 			-[x]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO 
 			-[ ]: [/admin/index.php] CREA UN PANEL DE ADMINISTRACIÓN
-			-[ ]: [/user/index.php] MUESTRA INFORMACIÓN SOBRE EL USUARIO Y SU PUNTUACIÓN
 			-[ ]: [/shoot/index.php] MUESTRA INFORMACIÓN SOBRE UN DISPARO REALIZADO [HAS GANADO x PUNTOS/YA HABÍAS DISPARADO AQUÍ]
