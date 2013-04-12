@@ -1,5 +1,11 @@
 <?php
-//	-/register/index.php
+//	-/register/regPlace/index.php
+include("../../functions.php");
+
+if(isset($_POST['sent'])&&$_POST['name']!=""){
+    addPlace($_POST['name'], $_POST['type']);
+    header("Location: ../");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -55,11 +61,11 @@
 		<form action="./" method="POST" class="form-signin">
 			<h2 class="form-signin-heading">Nuevo lugar</h2>
 			<input type="text" class="input-block-level" placeholder="Nombre" name="name">
-			<select class="input-block-level" name="">
+			<select class="input-block-level" name="type">
           <option value="2">Pegatina para Stand</option>
           <option value="3">Pegatina para Pabellón</option>
       </select>
-			<button class="btn btn-large btn-primary" type="submit">Registrar</button>
+			<button class="btn btn-large btn-primary" name="sent" value="true" type="submit">Registrar</button>
 		</form>
 	</div> <!-- /container -->
 </body>

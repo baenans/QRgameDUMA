@@ -237,14 +237,31 @@ function calculateScoreOfUser($user) {
 	return $totalScore;
 }
 
-function scoreOfAll(){
+function getAllUsers(){
 
-	$result=executeQuery("SELECT id, user, twitter FROM players");
+	$result=executeQuery("SELECT * FROM players");
 
 	while ($object=$result->fetch_object()) {
-		$players[$object->id]=(object)  array(	'user' => $object->user, 
-												'twitter' => $object->twitter,);;
+		$return[$object->id]=(object)  array(	'user' => $object->user, 
+												'twitter' => $object->twitter,
+												'phone' => $object->phone,);
 	}
+	return $return;
+}
+
+function getAllPlaces(){
+
+	$result=executeQuery("SELECT * FROM places");
+
+	while ($object=$result->fetch_object()) {
+		$return[$object->id]=(object)  array(	'name' => $object->name, );
+	}
+	return $return;
+}
+
+function scoreOfAll(){
+
+	$players=getAllUsers();
 
 	$result=executeQuery("SELECT user, sum(score) 'points' FROM shoots GROUP BY user ORDER BY sum(score) DESC");
 

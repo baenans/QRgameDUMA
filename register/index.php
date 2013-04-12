@@ -36,10 +36,13 @@
     <hr>
       <div class="jumbotron">
       <h1>¡<? echo (isset($_POST['twitter'])?"@":"") . $_POST['nick']; ?>!</h1>
-      <p class="lead">Ya casi estás registrado.<br>Solo te falta leer ahora este código con tu lector QR.</p>
+      <p class="lead">Ya casi estás registrado.<br>Solo te falta leer este código con tu lector QR.</p>
       <img src="<?php echo $qr1; ?>">
     </div>
+
+   <p align="center"> <a class="btn btn-large btn-success" href="../admin/">Volver a Panel de Administración</a></p>
     <hr>
+    
 
     <div class="footer">
     <p>&copy; <a href="http://www.informatica.uma.es">Escuela Técnica Superior de Ingeniería Informática</a> | UMA 2013</p>
