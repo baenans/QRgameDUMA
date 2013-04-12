@@ -106,10 +106,10 @@ function generateCode($from){
 	return $newCode;
 }
 
-function generateQR($data){
+function generateQR($data,$whereAmI=""){
 	include_once("phpqrcode/qrlib.php");
-	$filename = 'GeneratedQR/q'.md5($data).'.png';
-    QRcode::png($data, $filename, 'H', 8, 2);
+	$filename = $whereAmI.'GeneratedQR/q'.md5($data).'.png';
+    QRcode::png($data, $filename, 'H', 6, 2);
 	return $filename;
 }
 
@@ -131,6 +131,7 @@ function addPlayer($user,$phone,$twitter){
 	$mysqli = conectaDB();
 	if(!$mysqli->query("INSERT INTO `players` (`id` ,`user` ,`phone` ,`twitter`) VALUES (NULL , '".utf8_decode($user)."', '".$phone."', '".$twitter."');")){
 		$id=-1;
+		$code=-1;
 	} else {
 		$id=$mysqli->insert_id;
 		$code=generateCode($id+$user);
@@ -144,6 +145,7 @@ function addPlace($name, $type){
 	$mysqli = conectaDB();
 	if(!$mysqli->query("INSERT INTO `places` (`id` ,`name`) VALUES (NULL , '".utf8_decode($name)."');")){
 		$id=-1;
+		$code=-1;
 	} else {
 		$id=$mysqli->insert_id;
 		$code=generateCode($id+$name);
@@ -267,4 +269,3 @@ function scoreOfAll(){
 	//scoreOfAll();
 
 ?>
-

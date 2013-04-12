@@ -52,14 +52,14 @@
 		</div>
 
 		<hr>
-		<form action="../../register" method="POST" class="form-signin">
+		<form action="../../register/" method="POST" class="form-signin">
 			<h2 class="form-signin-heading">Nuevo participante</h2>
 			<input type="text" class="input-block-level" placeholder="Nick/Twitter" name="nick">
 			<input type="text" class="input-block-level" placeholder="Teléfono" name="telefono">
 			<label class="checkbox">
 				<input name="twitter" type="checkbox" value="twitter"> Twittero
 			</label>
-			<button class="btn btn-large btn-primary" type="submit">Registrar</button>
+			<button class="btn btn-large btn-primary" name="sent" value="true" type="submit">Registrar</button>
 		</form>
 	</div> <!-- /container -->
 </body>

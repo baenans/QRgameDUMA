@@ -1,6 +1,6 @@
 <?php
 //	-/ranking/index.php
-  //include("../functions.php");
+  include("../functions.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
 
     <div class="masthead">
       <ul class="nav nav-pills pull-right">
-        <li><a href="/">Inicio</a></li>
+        <li><a href="../">Inicio</a></li>
         <li class="active"><a href="#">Ránking</a></li>
         <li><a href="../about/">About</a></li>
       </ul>
@@ -37,7 +37,7 @@
         <tbody>
           <?php
             foreach(scoreOfAll() as $row) {
-              echo "<tr><td>" . $row -> number . "</td><td>" . $row -> nick . "</td><td>" . $row -> score . "</td></tr>";
+              echo "<tr><td>" . $row -> order . "</td><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> nick."'>".$row -> nick."</a>":$row -> nick) . "</td><td>" . $row -> score . "</td></tr>";
             }
           ?>
         </tbody>
