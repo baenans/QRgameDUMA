@@ -116,19 +116,10 @@ codes -> id[int] type[int] code[varchar32]
 
 
 		-[HTML/CSS]
-			
-<<<<<<< HEAD
-			-[x]: CREAR ESTILO PRINCIPAL [DANI]
-			-[x]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR [DANI]
-			-[x]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
-			-[ ]: [/register/#codigo] CREAR PANTALLA QUE MUESTRE "USUARIO nombre REGISTRADO EN EL JUEGO"
-			-[x]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO [DANI]
-=======
 			-[x]: CREAR ESTILO PRINCIPAL 
 			-[x]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR 
 			-[x]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
 			-[ ]: [/register/user/index.php] CREAR PANTALLA QUE MUESTRE DATOS SOBRE EL USUARIO
 			-[x]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO 
->>>>>>> 03107ce4da0cc97a4a7d88dc7d37c414ecf6cca8
 			-[ ]: [/admin/index.php] CREA UN PANEL DE ADMINISTRACIÓN
 			-[ ]: [/shoot/index.php] MUESTRA INFORMACIÓN SOBRE UN DISPARO REALIZADO [HAS GANADO x PUNTOS/YA HABÍAS DISPARADO AQUÍ]
