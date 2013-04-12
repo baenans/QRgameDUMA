@@ -39,7 +39,7 @@
           $scoreOfAll=scoreOfAll();
           if(count($scoreOfAll)>0){
               foreach($scoreOfAll as $row) {
-                echo "<tr><td>" . $row -> order . "</td><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> nick."'>".$row -> nick."</a>":$row -> nick) . "</td><td>" . $row -> score . "</td></tr>";
+                echo "<tr><td>" . $row -> order . "</td><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> nick."'>@".$row -> nick."</a>":$row -> nick) . "</td><td>" . $row -> score . "</td></tr>";
               }
           }
           ?>
@@ -52,5 +52,22 @@
     </div>
 
   </div> <!-- /container -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+  <script>
+     var time = new Date().getTime();
+     $(document.body).bind("mousemove keypress", function(e) {
+         time = new Date().getTime();
+     });
+
+     function refresh() {
+         if(new Date().getTime() - time >= 60000) 
+             window.location.reload(true);
+         else 
+             setTimeout(refresh, 10000);
+     }
+
+     setTimeout(refresh, 10000);
+  </script>
 </body>
 </html>
