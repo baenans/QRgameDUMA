@@ -9,6 +9,7 @@
 		$pass=	"";		//clave de la base de datos
 		$db=	"qrchallenge";		//nombre de la base de datos
 
+
 		$mysqli = new mysqli($host, $user, $pass, $db);
 		return $mysqli;
 	}

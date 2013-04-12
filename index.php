@@ -16,11 +16,11 @@
 
 		<div class="masthead">
 			<ul class="nav nav-pills pull-right">
-				<li class="active"><a href="#">Inicio</a></li>
-				<li><a href="#">Ránking</a></li>
-				<li><a href="#">About</a></li>
+				<li class="active"><a href="/">Inicio</a></li>
+				<li><a href="ranking/">Ránking</a></li>
+				<li><a href="about/">About</a></li>
 			</ul>
-			<img src="img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3 class="muted">ETSI Informática</h3>
+			<img src="../img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3 class="muted">ETSI Informática</h3>
 		</div>
 
 		<hr>

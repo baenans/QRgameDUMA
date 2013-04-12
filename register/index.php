@@ -48,7 +48,7 @@
 				<li><a href="#">Ránking</a></li>
 				<li><a href="#">About</a></li>
 			</ul>
-			<h3 class="muted">ETSI Informática</h3>
+			<img src="../img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3>ETSI Informática</h3>
 		</div>
 
 		<hr>

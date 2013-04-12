@@ -219,9 +219,23 @@ function shoot($uid,$code){
 					'score' => $score, 	//esto está de ejemplo 
 					'info' => $objectInfo, );	//id del lugar/persona donde se ha disparado
 }
+
+function calculateScoreOfUser($user) {
+	$scores = executeQuery("SELECT score FROM shoots WHERE user='".$user."'");
+	
+	$totalScore = 0;
+
+	foreach($aScore as $scores) {
+		$totalScore += $aScore;
+	}
+
+	return $totalScore;
+}
+
 	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
 	//echo addPlace(utf8_decode("Conserjería"),2) . "\n". addPlayer('tutida','666',true);
 	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
 	//generateQR("http://qea.me");
+
 ?>
 
