@@ -1,6 +1,7 @@
 <?php
 //	-/register/index.php
 	$agent = $_SERVER['HTTP_USER_AGENT'];  
+	echo $agent;
 	if(!preg_match('/iPhone/i', $agent)){
 		include("../../functions.php");
 		setUserCookie(substr($_SERVER['QUERY_STRING'],1));
