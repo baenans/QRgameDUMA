@@ -55,7 +55,7 @@ Ejemplos:
 */
 
 //Así se hace un IMPORT:
-include("functions.database.php");
+include("./ignore/functions.database.php");
 
 function installTables(){
 	
