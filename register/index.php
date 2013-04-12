@@ -8,7 +8,7 @@
   $code=addPlayer($_POST['nick'],$_POST['telefono'],isset($_POST['twitter']));
 
   if ($code!=-1){
-    $qr1=generateQR("http://qea.me/register/setCookie/?id=".$code,"../");
+    $qr=generateQR($code,2,"../");
   }
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
       <div class="jumbotron">
       <h1>¡<? echo (isset($_POST['twitter'])?"@":"") . $_POST['nick']; ?>!</h1>
       <p class="lead">Ya casi estás registrado.<br>Solo te falta leer este código con tu lector QR.</p>
-      <img src="<?php echo $qr1; ?>">
+      <img src="<?php echo $qr; ?>">
     </div>
 
    <p align="center"> <a class="btn btn-large btn-success" href="../admin/">Volver a Panel de Administración</a></p>

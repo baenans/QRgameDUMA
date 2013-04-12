@@ -56,7 +56,7 @@ Ejemplos:
 
 //Así se hace un IMPORT:
 
-
+include("config.php");
 include("ignore/functions.database.php");
 
 
@@ -106,8 +106,22 @@ function generateCode($from){
 	return $newCode;
 }
 
-function generateQR($data,$whereAmI=""){
+function generateQR($code,$type=1,$whereAmI=""){
 	include_once("phpqrcode/qrlib.php");
+	switch ($type) {
+		case 1:
+			//DISPARO
+			$data=$GLOBALS['gameurl']."/shoot/".$code;
+			break;
+		case 2:
+			//REGISTRO
+			$data=$GLOBALS['gameurl']."/register/setCookie/".$code;
+			break;
+		
+		default:
+			$data=$code;
+			break;
+	}
 	$filename = $whereAmI.'GeneratedQR/q'.md5($data).'.png';
     QRcode::png($data, $filename, 'H', 6, 2);
 	return $filename;
@@ -125,7 +139,10 @@ function whoIs($code){
 
 function setUserCookie($code){
 	$whois=whoIs($code);
-	setcookie("user", whoIs($code), time()+25200);
+	if($whois!=-1){
+		session_start();
+		$_SESSION['uid']=$whois;
+	}
 }
 function addPlayer($user,$phone,$twitter){
 	$mysqli = conectaDB();
@@ -161,9 +178,9 @@ function getPlayer($id){
 		if ($result->num_rows==1){
 			$object=$result->fetch_object();
 			$return= (object) array(	'type' 		=> 'user',
-						'user' 		=> $stuff->user, 
-						'phone'		=> $stuff->phone,
-						'twitter'	=> $stuff->twitter,);
+						'user' 		=> $object->user, 
+						'phone'		=> $object->phone,
+						'twitter'	=> $object->twitter,);
 		}
 	return $return;
 }
@@ -296,6 +313,5 @@ function eraseQRs($path="../"){
 	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
 	//generateQR("http://qea.me");
 	//scoreOfAll();
-installTables();
 
 ?>
