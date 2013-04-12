@@ -25,7 +25,22 @@
     </div>
 
     <hr>
-
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Posición</th>
+            <th>Nick</th>
+            <th>Puntuación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            foreach(scoreOfAll() as $row) {
+              echo "<tr><td>" . $row -> number . "</td><td>" . $row -> nick . "</td><td>" . $row -> score . "</td></tr>";
+            }
+          ?>
+        </tbody>
+      </table>
     <hr>
 
     <div class="footer">
