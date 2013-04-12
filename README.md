@@ -82,11 +82,11 @@ codes -> id[int] type[int] code[varchar32]
 		INSTALA UN SERVIDOR PARA PROBAR EN TU MÁQUINA LOCAL (http://www.apacºfriends.org/es/xampp.html)
 		NO USES la extensión .html, sino .php (AUNQUE TU DOCUMENTO TENGA SÓLO HTML)
 
-		-[ ]: BUSCAR LECTORES QR (que funcionen OFFLINE)
+		-[x]: BUSCAR LECTORES QR (que funcionen OFFLINE)
 					
-					- [x]:	iOS: [QRReader](https://itunes.apple.com/us/app/qr-reader-for-iphone/id368494609?mt=8) [FRAN]
-					- [x]:	Android: [QR Droid](https://play.google.com/store/apps/details?id=la.droid.qr&hl=es) [FRAN]
-					- [x]:	Windows Phone: [QR Code Offline](http://www.windowsphone.com/en-us/store/app/qr-code-offline/3a156888-2f6d-4bad-89f9-fc071a820435) [ALFONSO PALOMINO]
+					- [x]:	iOS: [QRReader](https://itunes.apple.com/us/app/qr-reader-for-iphone/id368494609?mt=8) 
+					- [x]:	Android: [QR Droid](https://play.google.com/store/apps/details?id=la.droid.qr&hl=es) 
+					- [x]:	Windows Phone: [QR Code Offline](http://www.windowsphone.com/en-us/store/app/qr-code-offline/3a156888-2f6d-4bad-89f9-fc071a820435)
 					- [x]:  Blackberry: [QR.arg](http://appworld.blackberry.com/webstore/content/118628/?lang=en&countrycode=ES)
 
 		-[ ]: BUSCAR LIBRERÍA QUE GENERE CÓDIGOS QR
@@ -94,36 +94,41 @@ codes -> id[int] type[int] code[varchar32]
 
 		-[SQL/PHP/JS]
 
-			-[x]: CREAR ESTRUCTURA BASE DE DATOS [FRAN]
-			-[x]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs [FRAN]
+			-[x]: CREAR ESTRUCTURA BASE DE DATOS 
+			-[x]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs 
 			-[ ]: CREAR FUNCIONES NECESARIAS PARA LAS SIGUIENTES TAREAS:
 				-[x]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO ALEATORIO QUE NO EXISTA EN LA TABLA CODES
-				-[x]: AÑADIR UN JUGADOR [FRAN]
-				-[x]: AÑADIR UN LUGAR [FRAN]
-				-[x]: OBTENER INFO DE UN JUGADOR [FRAN]
-				-[x]: OBTENER INFO DE UN LUGAR [FRAN]
-				-[ ]: OBTENER UN ARRAY DE LUGARES
-				-[ ]: OBTENER UN ARRAY DE JUGADORES
-				-[ ]: OBTENER LA SUMA DE LAS PUNTUACIONES DE LOS DISPARIOS DE UN JUGADOR
-				-[ ]: OBTENER LA LISTA DE TODOS LOS JUGADORES Y DE TODOS LOS DISPAROS, SUMAR LAS PUNTUACIONES DE TODOS LOS JUGADORES Y ORDENARLAS (Crear ranking)
-				-[x]: EFECTUAR DISPARO [FRAN]
+				-[x]: AÑADIR UN JUGADOR 
+				-[x]: AÑADIR UN LUGAR 
+				-[x]: OBTENER INFO DE UN JUGADOR 
+				-[x]: OBTENER INFO DE UN LUGAR 
+				-[x]: OBTENER LA SUMA DE LAS PUNTUACIONES DE LOS DISPARIOS DE UN JUGADOR
+				-[x]: OBTENER LA LISTA DE TODOS LOS JUGADORES Y DE TODOS LOS DISPAROS, SUMAR LAS PUNTUACIONES DE TODOS LOS JUGADORES Y ORDENARLAS (Crear ranking)
+				-[x]: EFECTUAR DISPARO 
 
 			-[ ]: CREA UNA FUNCIÓN QUE INTRODUZCA DATOS DE PRUEBA (LLAMANDO A LAS FUNCIONES DISEÑADAS ANTERIORMENTE)
 			-[x]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO QR
 
 			-[x]: [/getReader/index.php] HACER QUE LA PÁGINA REDIRIJA A CADA USUARIO A LA WEB DONDE PUEDE DESCARGAR CADA LECTOR QR (si hay manera de hacer que se abra en su store, guay)
-			-[ ]: [/ranking/index.php] REPRESENTAR EL RANKING
+			-[x]: [/ranking/index.php] REPRESENTAR EL RANKING
 			-[ ]: [/ranking/index.php][JS/HTML] HACER QUE LA PÁGINA SE ACTUALICE CADA x TIEMPO
-			-[ ]: [/register/#codigo] GUARDA UNA COOKIE DE 7 HORAS CON EL CÓDIGO DE USUARIO
+			-[ ]: [/register/#codigo] GUARDA UNA COOKIE DE 7 HORAS CON EL CÓDIGO DE USUARIO <- problemas
 
 
 		-[HTML/CSS]
 			
+<<<<<<< HEAD
 			-[x]: CREAR ESTILO PRINCIPAL [DANI]
 			-[x]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR [DANI]
 			-[x]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
 			-[ ]: [/register/#codigo] CREAR PANTALLA QUE MUESTRE "USUARIO nombre REGISTRADO EN EL JUEGO"
 			-[x]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO [DANI]
+=======
+			-[x]: CREAR ESTILO PRINCIPAL 
+			-[x]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR 
+			-[x]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
+			-[ ]: [/register/user/index.php] CREAR PANTALLA QUE MUESTRE DATOS SOBRE EL USUARIO
+			-[x]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO 
+>>>>>>> 03107ce4da0cc97a4a7d88dc7d37c414ecf6cca8
 			-[ ]: [/admin/index.php] CREA UN PANEL DE ADMINISTRACIÓN
-			-[ ]: [/user/index.php] MUESTRA INFORMACIÓN SOBRE EL USUARIO Y SU PUNTUACIÓN
 			-[ ]: [/shoot/index.php] MUESTRA INFORMACIÓN SOBRE UN DISPARO REALIZADO [HAS GANADO x PUNTOS/YA HABÍAS DISPARADO AQUÍ]

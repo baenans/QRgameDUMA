@@ -55,7 +55,10 @@ Ejemplos:
 */
 
 //Así se hace un IMPORT:
-include("./ignore/functions.database.php");
+
+include("config.php");
+include("ignore/functions.database.php");
+
 
 function installTables(){
 	
@@ -84,7 +87,7 @@ function installTables(){
 						`type` INT NOT NULL ,
 						`id` INT NOT NULL ,
 						`code` VARCHAR( 32 ) NOT NULL ,
-						PRIMARY KEY ( `type` , `id` ) ,
+						PRIMARY KEY ( `type` , `id`) ,
 						UNIQUE (`code`)) 
 						ENGINE = MYISAM ;");
 
@@ -103,10 +106,24 @@ function generateCode($from){
 	return $newCode;
 }
 
-function generateQR($data){
+function generateQR($code,$type=1,$whereAmI=""){
 	include_once("phpqrcode/qrlib.php");
-	$filename = 'GeneratedQR/q'.md5($data).'.png';
-    QRcode::png($data, $filename, 'H', 8, 2);
+	switch ($type) {
+		case 1:
+			//DISPARO
+			$data=$GLOBALS['gameurl']."/shoot/".$code;
+			break;
+		case 2:
+			//REGISTRO
+			$data=$GLOBALS['gameurl']."/register/setCookie/".$code;
+			break;
+		
+		default:
+			$data=$code;
+			break;
+	}
+	$filename = $whereAmI.'GeneratedQR/q'.md5($data).'.png';
+    QRcode::png($data, $filename, 'H', 6, 2);
 	return $filename;
 }
 
@@ -122,12 +139,16 @@ function whoIs($code){
 
 function setUserCookie($code){
 	$whois=whoIs($code);
-	setcookie("user", whoIs($code), time()+25200);
+	if($whois!=-1){
+		session_start();
+		$_SESSION['uid']=$whois;
+	}
 }
 function addPlayer($user,$phone,$twitter){
 	$mysqli = conectaDB();
 	if(!$mysqli->query("INSERT INTO `players` (`id` ,`user` ,`phone` ,`twitter`) VALUES (NULL , '".utf8_decode($user)."', '".$phone."', '".$twitter."');")){
 		$id=-1;
+		$code=-1;
 	} else {
 		$id=$mysqli->insert_id;
 		$code=generateCode($id+$user);
@@ -141,6 +162,7 @@ function addPlace($name, $type){
 	$mysqli = conectaDB();
 	if(!$mysqli->query("INSERT INTO `places` (`id` ,`name`) VALUES (NULL , '".utf8_decode($name)."');")){
 		$id=-1;
+		$code=-1;
 	} else {
 		$id=$mysqli->insert_id;
 		$code=generateCode($id+$name);
@@ -155,10 +177,10 @@ function getPlayer($id){
 	$result=executeQuery("SELECT user, phone, twitter FROM players WHERE id=".$id);
 		if ($result->num_rows==1){
 			$object=$result->fetch_object();
-			$return= (object) array('type' 		=> 'user',
-									'user' 		=> $object->user, 
-									'phone'		=> $object->phone,
-									'twitter'	=> $object->twitter,);
+			$return= (object) array(	'type' 		=> 'user',
+						'user' 		=> $object->user, 
+						'phone'		=> $object->phone,
+						'twitter'	=> $object->twitter,);
 		}
 	return $return;
 }
@@ -225,22 +247,71 @@ function calculateScoreOfUser($user) {
 	
 	$totalScore = 0;
 
-	foreach($aScore as $scores) {
-		$totalScore += $aScore;
+	while ($aScore=$scores->fetch_object()){
+			$totalScore += $aScore;
 	}
 
 	return $totalScore;
 }
 
-function scoreOfUser($uid) {
-	$nick = executeQuery("SELECT user FROM players WHERE id='".$uid."'");
-	$score = calculateScoreOfUser($uid);
+function getAllUsers(){
+
+	$result=executeQuery("SELECT * FROM players");
+
+	while ($object=$result->fetch_object()) {
+		$return[$object->id]=(object)  array(	'user' => $object->user, 
+												'twitter' => $object->twitter,
+												'phone' => $object->phone,);
+	}
+	return $return;
 }
 
+function getAllPlaces(){
+
+	$result=executeQuery("SELECT * FROM places");
+
+	while ($object=$result->fetch_object()) {
+		$return[$object->id]=(object)  array(	'name' => $object->name, );
+	}
+	return $return;
+}
+
+function scoreOfAll(){
+
+	$players=getAllUsers();
+
+	$result=executeQuery("SELECT user, sum(score) 'points' FROM shoots GROUP BY user ORDER BY sum(score) DESC");
+
+
+ 	if($result->num_rows>0){
+		while ($object=$result->fetch_object()) {
+			$scores[$object->user]=$object->points;
+		}
+
+		$i=1;
+
+		foreach ($scores as $user => $score) {
+			$return[]=(object) array(	'order' => $i++,
+									'nick' => $players[$user]->user ,
+									'twitter' => $players[$user]->twitter ,
+									'score' => $score , );
+			}
+	}
+	return $return;
+}
+function eraseQRs($path="../"){
+	$dir=$path."GeneratedQR/";
+	$directorio=opendir($dir); 
+	while ($archivo = readdir($directorio)){
+		if(($archivo!='index.php')&&($archivo!='eraseQR.php')&&$archivo!='.'&&$archivo!='..'){
+			unlink($dir.$archivo);
+		}
+	}
+}
 	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
 	//echo addPlace(utf8_decode("Conserjería"),2) . "\n". addPlayer('tutida','666',true);
 	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
 	//generateQR("http://qea.me");
+	//scoreOfAll();
 
 ?>
-

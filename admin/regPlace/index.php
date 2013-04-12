@@ -1,13 +1,19 @@
 <?php
-//	-/register/index.php
+//	-/register/regPlace/index.php
+include("../../functions.php");
+
+if(isset($_POST['sent'])&&$_POST['name']!=""){
+    addPlace($_POST['name'], $_POST['type']);
+    header("Location: ../");
+}
 ?>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>QR Challenge | Registro</title>
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<style type="text/css">
 	body {
         padding-top: 40px;
@@ -48,18 +54,18 @@
 				<li><a href="#">Ránking</a></li>
 				<li><a href="#">About</a></li>
 			</ul>
-			<img src="../img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3>ETSI Informática</h3>
+			<img src="../../img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3>ETSI Informática</h3>
 		</div>
 
 		<hr>
-		<form action="../register" method="POST" class="form-signin">
-			<h2 class="form-signin-heading">Nuevo participante</h2>
-			<input type="text" class="input-block-level" placeholder="Nick/Twitter" name="nick">
-			<input type="text" class="input-block-level" placeholder="Teléfono" name="telefono">
-			<label class="checkbox">
-				<input name="twitter" type="checkbox" value="twitter"> Twittero
-			</label>
-			<button class="btn btn-large btn-primary" type="submit">Registrar</button>
+		<form action="./" method="POST" class="form-signin">
+			<h2 class="form-signin-heading">Nuevo lugar</h2>
+			<input type="text" class="input-block-level" placeholder="Nombre" name="name">
+			<select class="input-block-level" name="type">
+          <option value="2">Pegatina para Stand</option>
+          <option value="3">Pegatina para Pabellón</option>
+      </select>
+			<button class="btn btn-large btn-primary" name="sent" value="true" type="submit">Registrar</button>
 		</form>
 	</div> <!-- /container -->
 </body>

@@ -1,58 +1,53 @@
 <?php
 //	-/register/index.php
+  include("../functions.php");
+  if(!isset($_POST['sent'])){
+    header("Location: ../");
+  } 
+  
+  $code=addPlayer($_POST['nick'],$_POST['telefono'],isset($_POST['twitter']));
+
+  if ($code!=-1){
+    $qr=generateQR($code,2,"../");
+  }
 ?>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
 	<meta charset="UTF-8">
-	<title>QR Challenge | Registro</title>
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ETSII QR CHALLENGE | Registrado</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<style type="text/css">
-	body {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-    }
-    .form-signin {
-        max-width: 300px;
-        padding: 19px 29px 29px;
-        margin: 0 auto 20px;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
-        -webkit-border-radius: 5px;
-           -moz-border-radius: 5px;
-                border-radius: 5px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                box-shadow: 0 1px 2px rgba(0,0,0,.05);
-      }
-      .form-signin .form-signin-heading,
-      .form-signin .checkbox {
-        margin-bottom: 10px;
-      }
-      .form-signin input[type="text"],
-      .form-signin input[type="password"] {
-        font-size: 16px;
-        height: auto;
-        margin-bottom: 15px;
-        padding: 7px 9px;
-      }
-	</style>
 </head>
 <body>
-	<div class="container">
-		<div class="masthead">
-			<ul class="nav nav-pills pull-right">
-				<li><a href="/">Inicio</a></li>
-				<li><a href="#">Ránking</a></li>
-				<li><a href="#">About</a></li>
-			</ul>
-			<img src="../img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3>ETSI Informática</h3>
-		</div>
 
-		<hr>
-		
-	</div> <!-- /container -->
+  <div class="container-narrow">
+
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <li><a href="../">Inicio</a></li>
+        <li><a href="../ranking">Ránking</a></li>
+        <li><a href="../about/">About</a></li>
+      </ul>
+      <img src="../img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3 class="muted">ETSI Informática</h3>
+    </div>
+
+    <hr>
+      <div class="jumbotron">
+      <h1>¡<? echo (isset($_POST['twitter'])?"@":"") . $_POST['nick']; ?>!</h1>
+      <p class="lead">Ya casi estás registrado.<br>Solo te falta leer este código con tu lector QR.</p>
+      <img src="<?php echo $qr; ?>">
+    </div>
+
+   <p align="center"> <a class="btn btn-large btn-success" href="../admin/">Volver a Panel de Administración</a></p>
+    <hr>
+    
+
+    <div class="footer">
+    <p>&copy; <a href="http://www.informatica.uma.es">Escuela Técnica Superior de Ingeniería Informática</a> | UMA 2013</p>
+    </div>
+
+  </div> <!-- /container -->
 </body>
 </html>
