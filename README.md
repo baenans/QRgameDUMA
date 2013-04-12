@@ -121,7 +121,7 @@ codes -> id[int] type[int] code[varchar32]
 			
 			-[x]: CREAR ESTILO PRINCIPAL [DANI]
 			-[x]: [/index.php] PÁGINA DE INICIO QUE DÉ INFORMACIÓN SOBRE EL JUEGO Y TENGA UN LINK A LA WEB DE LA ESCUELA Y OTRO A LA WEB QUE TE REDIRIGE A LA WEB DONDE PUEDES OBTENER EL LECTOR QR [DANI]
-			-[ ]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
+			-[x]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
 			-[ ]: [/register/#codigo] CREAR PANTALLA QUE MUESTRE "USUARIO nombre REGISTRADO EN EL JUEGO"
 			-[x]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO [DANI]
 			-[ ]: [/admin/index.php] CREA UN PANEL DE ADMINISTRACIÓN

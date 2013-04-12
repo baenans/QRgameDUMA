@@ -1,6 +1,6 @@
 <?php
 //	-/ranking/index.php
-  //include("../functions.php");
+  include("../functions.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,9 +36,10 @@
         </thead>
         <tbody>
           <?php
-            foreach(scoreOfAll() as $row) {
+            //$scores = scoreOfAll();
+            /*foreach($scores as $row) {
               echo "<tr><td>" . $row -> number . "</td><td>" . $row -> nick . "</td><td>" . $row -> score . "</td></tr>";
-            }
+            }*/
           ?>
         </tbody>
       </table>
