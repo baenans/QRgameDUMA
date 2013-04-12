@@ -56,7 +56,9 @@ Ejemplos:
 
 //Así se hace un IMPORT:
 
+
 include("ignore/functions.database.php");
+
 
 function installTables(){
 	
