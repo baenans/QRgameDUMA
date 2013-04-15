@@ -16,7 +16,7 @@
 
     <div class="masthead">
       <ul class="nav nav-pills pull-right">
-        <li><a href="/">Inicio</a></li>
+        <li><a href="../">Inicio</a></li>
         <li><a href="../ranking/">Ránking</a></li>
         <li class="active"><a href="#">About</a></li>
       </ul>

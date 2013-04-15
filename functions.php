@@ -115,7 +115,7 @@ function generateQR($code,$type=1,$whereAmI=""){
 			break;
 		case 2:
 			//REGISTRO
-			$data=$GLOBALS['gameurl']."/register/setCookie/".$code;
+			$data=$GLOBALS['gameurl']."/register/code/".$setSession;
 			break;
 		
 		default:
@@ -137,7 +137,7 @@ function whoIs($code){
 	return $return;
 }
 
-function setUserCookie($code){
+function setUserSession($code){
 	$whois=whoIs($code);
 	if($whois!=-1){
 		session_start();
@@ -313,5 +313,6 @@ function eraseQRs($path="../"){
 	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
 	//generateQR("http://qea.me");
 	//scoreOfAll();
+	//installTables();
 
 ?>
