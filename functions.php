@@ -308,6 +308,20 @@ function eraseQRs($path="../"){
 		}
 	}
 }
+
+
+/* AUTENTICACIÓN ADMINISTRADOR */
+
+function setAdmin($user,$pass){
+	//Si las claves son correctas, guarda una sesión que diga que es admin
+
+} 
+
+function isAdmin(){
+	//Busca si el usuario es administrador, y si no redirecciona a la web de login 	
+}
+
+
 	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
 	//echo addPlace(utf8_decode("Conserjería"),2) . "\n". addPlayer('tutida','666',true);
 	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
