@@ -15,14 +15,15 @@ Las puntuaciones serán:
 
 	- QR EN PERSONA: 75pts
 	- QR EN PUESTO: 25pts
-	- QR POR TODO EL PABELLÓN: 100pts
+	- QR ESCONDIDO POR EL PABELLÓN: 100pts
+	- QR ESPECIAL: 150pts (estarán, entre otros lugares, en las presentaciones que haga la escuela)
 
 
 	Y hay que obtener un mínimo de 300pts (visitar 12 puestos, encontrar 3 pegatinas escondidas, disparar a 4 personas o cualquier permutación de las anteriores).
 
 - Tecnologías usadas:
 
-	HTML, CSS, PHP, (MySQL/SQLite)?, JS?
+	HTML, CSS, PHP, MySQL, JS
 
 
 #DIRECTORIOS
@@ -42,7 +43,7 @@ Dependiendo de la ruta que se visite en la web (www.qea.me/(ruta)), se hacen var
 	1. Se pide un nickname (preferentemente nombre de usuario de tuiter), y un teléfono para contactar en caso de que gane algo.
 	2. Se registra en la base de datos y se devuelve un QR con un enlace a /admin/enroll/#codigo, donde #codigo es la id del usuario en la BD, y otro QR con un enlace a /whoami
 
-/register/#codigo -> registra a quien visite esta página una cookie donde le identifique como el usuario id= #código y le da una confirmación
+/register/setSession/#codigo -> registra a quien visite esta página una cookie donde le identifique como el usuario id= #código y le da una confirmación
 
 /user -> esta página es para probar que la cookie se ha registrado, y para que cada usuario vea su puntuación. Se cierra el navegador después de registrarse con el QR de Registro y se abre esta página para comprobar que es la persona que acabamos de registrar.
 
@@ -94,9 +95,12 @@ codes -> id[int] type[int] code[varchar32]
 
 		-[SQL/PHP/JS]
 
+
+			-[ ]: CREAR UNA AUTENTICACIÓN BÁSICA PARA EL PANEL DE USUARIOS 
+
 			-[x]: CREAR ESTRUCTURA BASE DE DATOS 
 			-[x]: MÉTODOS PARA CONECTAR CON LA BD Y HACER QUERYs 
-			-[ ]: CREAR FUNCIONES NECESARIAS PARA LAS SIGUIENTES TAREAS:
+			-[x]: CREAR FUNCIONES NECESARIAS PARA LAS SIGUIENTES TAREAS:
 				-[x]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO ALEATORIO QUE NO EXISTA EN LA TABLA CODES
 				-[x]: AÑADIR UN JUGADOR 
 				-[x]: AÑADIR UN LUGAR 
@@ -106,13 +110,13 @@ codes -> id[int] type[int] code[varchar32]
 				-[x]: OBTENER LA LISTA DE TODOS LOS JUGADORES Y DE TODOS LOS DISPAROS, SUMAR LAS PUNTUACIONES DE TODOS LOS JUGADORES Y ORDENARLAS (Crear ranking)
 				-[x]: EFECTUAR DISPARO 
 
-			-[ ]: CREA UNA FUNCIÓN QUE INTRODUZCA DATOS DE PRUEBA (LLAMANDO A LAS FUNCIONES DISEÑADAS ANTERIORMENTE)
+			-[ ]: CREA UNA FUNCIÓN QUE INTRODUZCA DATOS DE PRUEBA (LLAMANDO A LAS FUNCIONES DISEÑADAS ANTERIORMENTE) 
 			-[x]: CREA UNA FUNCIÓN QUE GENERE UN CÓDIGO QR
 
 			-[x]: [/getReader/index.php] HACER QUE LA PÁGINA REDIRIJA A CADA USUARIO A LA WEB DONDE PUEDE DESCARGAR CADA LECTOR QR (si hay manera de hacer que se abra en su store, guay)
 			-[x]: [/ranking/index.php] REPRESENTAR EL RANKING
 			-[x]: [/ranking/index.php][JS/HTML] HACER QUE LA PÁGINA SE ACTUALICE CADA x TIEMPO
-			-[ ]: [/register/#codigo] GUARDA UNA COOKIE DE 7 HORAS CON EL CÓDIGO DE USUARIO <- problemas
+			-[x]: [/register/setSession/#codigo] GUARDA EL ID DE USUARIO EN UNA SESIÓN
 
 
 		-[HTML/CSS]
@@ -121,5 +125,5 @@ codes -> id[int] type[int] code[varchar32]
 			-[x]: [ranking/index.php] INTERFAZ DEL RANKING (posicion/nombre de usuario/puntos)
 			-[ ]: [/register/user/index.php] CREAR PANTALLA QUE MUESTRE DATOS SOBRE EL USUARIO
 			-[x]: [/register/index.php] INTERFAZ DE REGISTRO DE USUARIO 
-			-[ ]: [/admin/index.php] CREA UN PANEL DE ADMINISTRACIÓN
-			-[ ]: [/shoot/index.php] MUESTRA INFORMACIÓN SOBRE UN DISPARO REALIZADO [HAS GANADO x PUNTOS/YA HABÍAS DISPARADO AQUÍ]
+			-[x]: [/admin/index.php] CREA UN PANEL DE ADMINISTRACIÓN
+			-[ ]: [/shoot/index.php] MUESTRA INFORMACIÓN SOBRE UN DISPARO REALIZADO [HAS GANADO x PUNTOS/YA HABÍAS DISPARADO AQUÍ] (Falta BOOTSTRAP)
