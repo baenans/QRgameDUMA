@@ -220,7 +220,7 @@ function shoot($uid,$code){
 		} else {
 			//Si type!=1, es un lugar
 			$objectInfo=getPlace($object->id);
-			$score=($object->type==3?100:25);
+			$score=($object->type==3?100:($object->type==2?25:($object->type==4?150:0)));
 		}
 
 			//Guardamos el disparo en la Base de Datos
@@ -322,7 +322,7 @@ function isAdmin(){
 }
 
 
-	//print_r(shoot(1,'00d7748617c3ddefae03bdd414253ad4'));
+	print_r(shoot(1,'f876e5650f808e2a6add0a03cfb7a23d'));
 	//echo addPlace(utf8_decode("Conserjería"),2) . "\n". addPlayer('tutida','666',true);
 	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
 	//generateQR("http://qea.me");
