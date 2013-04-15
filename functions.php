@@ -313,7 +313,7 @@ function eraseQRs($path="../"){
 /* AUTENTICACIÓN ADMINISTRADOR */
 
 function setAdmin($user,$pass){
-	//Si las claves son correctas, guarda una sesión que diga que es admin
+	//Si las claves son correctas, guarda una sesión que diga que es admin y redirecciona a la web de admin
 
 } 
 
