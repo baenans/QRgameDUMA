@@ -116,7 +116,7 @@ function generateQR($code,$type=1,$whereAmI=""){
 			break;
 		case 2:
 			//REGISTRO
-			$data=$GLOBALS['gameurl']."/register/code/".$setSession;
+			$data=$GLOBALS['gameurl']."/register/setSession/code/".$code;
 			break;
 		
 		default:
@@ -130,23 +130,28 @@ function generateQR($code,$type=1,$whereAmI=""){
 
 
 function allocatePersonalCodes(){
+	$mysqli = conectaDB();
 	for ($id=0; $id < 150; $id++) { 
 		$code=generateCode($id+time());
 		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('1', '".$id."', '".$code."', '0');");
 	}
-	
+	$mysqli->close();
 }
 function allocateStandCodes(){
+	$mysqli = conectaDB();
 	for ($id=0; $id < 50; $id++) { 
 		$code=generateCode($id+time());
 		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('2', '".$id."', '".$code."', '0');");
 	}
+	$mysqli->close();
 }
 function allocateStadiumCodes(){
+	$mysqli = conectaDB();
 	for ($id=0; $id < 50; $id++) { 
 		$code=generateCode($id+time());
 		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('3', '".$id."', '".$code."', '0');");
 	}
+	$mysqli->close();
 }
 
 function allocateCodes(){
@@ -378,5 +383,6 @@ function isAdmin(){
 	//generateQR("http://qea.me");
 	//scoreOfAll();
 	//installTables();
+
 
 ?>
