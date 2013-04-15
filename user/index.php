@@ -33,14 +33,21 @@ if(isset($_SESSION['uid'])){
     </div>
 
     <hr>
-      <h1><?php echo $user; ?></h1>
+      <h1 style='text-align:center'><?php echo $user; ?></h1>
+      <br><br>
+      <!--
+
+      La idea es que en el h1 se muestre el nombre de usuario, y con una @ si es tuitero :P
+
+
       <form class="form-horizontal">
+      
       	<div class="control-group">
       		<label for="telefono" class="control-label">Teléfono</label>
       		<div class="controls">
       			<span type="text" class="uneditable-input"><?php echo $telefono; ?></span>
       		</div>
-      	</div>
+      	</div> 
       	<div class="control-group">
       		<label for="telefono" class="control-label">Twitter</label>
       		<div class="controls">
@@ -50,8 +57,19 @@ if(isset($_SESSION['uid'])){
 	      		</div>
       		</div>
       	</div>
-      </form>
+      </form> -->
+
+
+      <!-- Esto lo voy a hacer en guarro y lo pones bonito si puedes, @iamdanilopez -->
+      <!-- El número en gande -->
+      <p align=center><font style='font-size:4.5em'>000</font><br><br>Puntos<br><br>
+      <div class='person shoot' style='text-align:center'>Has disparado a @talpersona</div>
+      <div class='stand shoot' style='text-align:center'>Has disparado al puesto de IAESTE</div>
+      <br><br>
+      <div class='motivacion' style='text-align:center'>Te quedan 000 puntos para conseguir nuestra camiseta / Ya puedes pasar por nuestro stand para conseguir nuestra camiseta</div>
+     </p>
     <hr>
+
 
     <div class="footer">
     <p>&copy; <a href="http://www.informatica.uma.es">Escuela Técnica Superior de Ingeniería Informática</a> | UMA 2013</p>
