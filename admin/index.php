@@ -42,7 +42,7 @@ eraseQRs();
           $users=getAllUsers();
           if (count($users)>0){
           	foreach($users as $row) {
-              echo "<tr><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> user."'>@".$row -> user."</a>":$row -> user) . "</td><td>" . $row -> phone . "</td></tr>";
+              echo "<tr><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> user."'>@".$row -> user."</a>":$row -> user) . "</td><td><a href='getQR.php?type=1&id=".$row->id."'>" . $row -> phone . "</a></td></tr>";
             }
           }
             
@@ -64,7 +64,7 @@ eraseQRs();
           	$places=getAllPlaces();
           	if(count($places)>0){
             	foreach(getAllPlaces() as $row) {
-              	echo "<tr><td>". utf8_encode($row -> name) . "</td></tr>";
+              	echo "<tr><td><a href='getQR.php?type=".$row-> type."&id=".$row-> id."'>". utf8_encode($row -> name) . "</td></tr>";
             	}
             }
           ?>

@@ -1,16 +1,10 @@
 <?php
 //	-/user/index.php
 include("../functions.php");
-session_start();
-$user = "JohnSmith";
-
-if(isset($_SESSION['uid'])){
-	$user = getPlayer($_SESSION['uid'])->user;
-	echo "You are " . $user;
-}
-
-
-?>
+  $user = getPlayer(controlUserSession());
+  echo "You are " . $user->user;
+//$user = "JohnSmith"; 
+  ?>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -78,20 +72,5 @@ if(isset($_SESSION['uid'])){
   </div> <!-- /container -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-  <script>
-     var time = new Date().getTime();
-     $(document.body).bind("mousemove keypress", function(e) {
-         time = new Date().getTime();
-     });
-
-     function refresh() {
-         if(new Date().getTime() - time >= 60000) 
-             window.location.reload(true);
-         else 
-             setTimeout(refresh, 10000);
-     }
-
-     setTimeout(refresh, 10000);
-  </script>
 </body>
 </html>

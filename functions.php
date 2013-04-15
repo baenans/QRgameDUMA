@@ -74,8 +74,10 @@ function installTables(){
 						ENGINE = MYISAM ;");
 		
 	executeQuery("CREATE TABLE IF NOT EXISTS `places` (
-						`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-						`name` VARCHAR( 35 ) NOT NULL) 
+						`type` INT NOT NULL ,
+						`id` INT NOT NULL AUTO_INCREMENT ,
+						`name` VARCHAR( 35 ) NOT NULL,
+						PRIMARY KEY ( `type` , `id`)) 
 						ENGINE = MYISAM ;");
 	executeQuery("CREATE TABLE IF NOT EXISTS `shoots` (
 						`user` INT NOT NULL ,
@@ -116,7 +118,7 @@ function generateQR($code,$type=1,$whereAmI=""){
 			break;
 		case 2:
 			//REGISTRO
-			$data=$GLOBALS['gameurl']."/register/setSession/code/".$code;
+			$data=$GLOBALS['gameurl']."/register/setSession/".$code;
 			break;
 		
 		default:
@@ -131,7 +133,7 @@ function generateQR($code,$type=1,$whereAmI=""){
 
 function allocatePersonalCodes(){
 	$mysqli = conectaDB();
-	for ($id=0; $id < 150; $id++) { 
+	for ($id=1; $id <= 150; $id++) { 
 		$code=generateCode($id+time());
 		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('1', '".$id."', '".$code."', '0');");
 	}
@@ -139,7 +141,7 @@ function allocatePersonalCodes(){
 }
 function allocateStandCodes(){
 	$mysqli = conectaDB();
-	for ($id=0; $id < 50; $id++) { 
+	for ($id=1; $id <= 50; $id++) { 
 		$code=generateCode($id+time());
 		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('2', '".$id."', '".$code."', '0');");
 	}
@@ -147,7 +149,7 @@ function allocateStandCodes(){
 }
 function allocateStadiumCodes(){
 	$mysqli = conectaDB();
-	for ($id=0; $id < 50; $id++) { 
+	for ($id=1; $id <= 50; $id++) { 
 		$code=generateCode($id+time());
 		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('3', '".$id."', '".$code."', '0');");
 	}
@@ -182,6 +184,13 @@ function lookupCode($type,$id){
 	return $return;
 }
 
+function lookupCodeNoAlloc($type,$id){
+		$result=executeQuery("SELECT code FROM `codes` WHERE `type` =".$type." AND `id` =".$id);
+		$object=$result->fetch_object();
+		$return=$object->code;
+		return $return;
+}
+
 
 function whoIs($code){
 	$return=-1;
@@ -200,6 +209,14 @@ function setUserSession($code){
 		$_SESSION['uid']=$whois;
 	}
 }
+
+function controlUserSession(){
+	session_start();
+	if (!isset($_SESSION['uid'])){
+		header("Location: ../");
+	} 
+	return $_SESSION['uid'];
+}
 function addPlayer($user,$phone,$twitter){
 	$mysqli = conectaDB();
 	if(!$mysqli->query("INSERT INTO `players` (`id` ,`user` ,`phone` ,`twitter`) VALUES (NULL , '".utf8_decode($user)."', '".$phone."', '".$twitter."');")){
@@ -208,6 +225,7 @@ function addPlayer($user,$phone,$twitter){
 	} else {
 		$id=$mysqli->insert_id;
 		$code=lookupCode(1,$id);
+		setTaken(1,$id);
 	}
 	$mysqli->close();
 	return $code;
@@ -215,15 +233,21 @@ function addPlayer($user,$phone,$twitter){
 
 function addPlace($name, $type){
 	$mysqli = conectaDB();
-	if(!$mysqli->query("INSERT INTO `places` (`id` ,`name`) VALUES (NULL , '".utf8_decode($name)."');")){
+	if(!$mysqli->query("INSERT INTO `places` (`id` ,`name`, `type`) VALUES (NULL , '".utf8_decode($name)."', '".$type."');")){
 		$id=-1;
 		$code=-1;
 	} else {
 		$id=$mysqli->insert_id;
 		$code=lookupCode($type,$id);
+		setTaken($type,$id);
 	}
 	$mysqli->close();
 	return $code;
+}
+
+
+function setTaken($type,$id){
+	executeQuery("UPDATE `codes` SET `taken` = '1' WHERE `codes`.`type` =".$type." AND `codes`.`id` =".$id.";");
 }
 
 function getPlayer($id){
@@ -315,7 +339,8 @@ function getAllUsers(){
 	while ($object=$result->fetch_object()) {
 		$return[$object->id]=(object)  array(	'user' => $object->user, 
 												'twitter' => $object->twitter,
-												'phone' => $object->phone,);
+												'phone' => $object->phone,
+												'id' => $object->id,);
 	}
 	return $return;
 }
@@ -325,7 +350,9 @@ function getAllPlaces(){
 	$result=executeQuery("SELECT * FROM places");
 
 	while ($object=$result->fetch_object()) {
-		$return[$object->id]=(object)  array(	'name' => $object->name, );
+		$return[]=(object)  array(	'name' => $object->name,
+									'id' => $object->id,
+									'type' => $object->type,);
 	}
 	return $return;
 }

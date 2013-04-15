@@ -2,10 +2,10 @@
 //	-/register/index.php
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>QR Challenge | Registro</title>
+	<title>QR Challenge | Login de Administrador</title>
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<style type="text/css">
