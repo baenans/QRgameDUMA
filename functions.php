@@ -87,6 +87,7 @@ function installTables(){
 						`type` INT NOT NULL ,
 						`id` INT NOT NULL ,
 						`code` VARCHAR( 32 ) NOT NULL ,
+						`taken` BOOL NOT NULL DEFAULT '0',
 						PRIMARY KEY ( `type` , `id`) ,
 						UNIQUE (`code`)) 
 						ENGINE = MYISAM ;");
@@ -127,6 +128,56 @@ function generateQR($code,$type=1,$whereAmI=""){
 	return $filename;
 }
 
+
+function allocatePersonalCodes(){
+	for ($id=0; $id < 150; $id++) { 
+		$code=generateCode($id+time());
+		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('1', '".$id."', '".$code."', '0');");
+	}
+	
+}
+function allocateStandCodes(){
+	for ($id=0; $id < 50; $id++) { 
+		$code=generateCode($id+time());
+		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('2', '".$id."', '".$code."', '0');");
+	}
+}
+function allocateStadiumCodes(){
+	for ($id=0; $id < 50; $id++) { 
+		$code=generateCode($id+time());
+		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('3', '".$id."', '".$code."', '0');");
+	}
+}
+
+function allocateCodes(){
+	allocatePersonalCodes();
+	allocateStandCodes();
+	allocateStadiumCodes();
+}
+
+function lookupCode($type,$id){
+	$return=-1;
+	$result=executeQuery("SELECT code FROM `codes` WHERE `type` =".$type." AND `id` =".$id." AND `taken` =0");
+	if ($result->num_rows==0){
+		switch ($type) {
+			case 1:
+				allocatePersonalCodes();
+				break;
+			case 2:
+				allocateStandCodes();
+				break;
+			case 3:
+				allocateStadiumCodes();
+				break;
+		}
+		$result=executeQuery("SELECT code FROM `codes` WHERE `type` =".$type." AND `id` =".$id." AND `taken` =0");
+	} 
+		$object=$result->fetch_object();
+		$return=$object->code;
+	return $return;
+}
+
+
 function whoIs($code){
 	$return=-1;
 	$result=executeQuery("SELECT id FROM codes WHERE code='".$code."'");
@@ -151,8 +202,7 @@ function addPlayer($user,$phone,$twitter){
 		$code=-1;
 	} else {
 		$id=$mysqli->insert_id;
-		$code=generateCode($id+$user);
-		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`) VALUES ('1', '".$id."', '".$code."');");
+		$code=lookupCode(1,$id);
 	}
 	$mysqli->close();
 	return $code;
@@ -165,8 +215,7 @@ function addPlace($name, $type){
 		$code=-1;
 	} else {
 		$id=$mysqli->insert_id;
-		$code=generateCode($id+$name);
-		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`) VALUES ('".$type."', '".$id."', '".$code."');");
+		$code=lookupCode($type,$id);
 	}
 	$mysqli->close();
 	return $code;
@@ -291,7 +340,8 @@ function scoreOfAll(){
 		$i=1;
 
 		foreach ($scores as $user => $score) {
-			$return[]=(object) array(	'order' => $i++,
+			$return[]=(object) array(	
+									'order' => $i++,
 									'nick' => $players[$user]->user ,
 									'twitter' => $players[$user]->twitter ,
 									'score' => $score , );
@@ -313,7 +363,7 @@ function eraseQRs($path="../"){
 /* AUTENTICACIÓN ADMINISTRADOR */
 
 function setAdmin($user,$pass){
-	//Si las claves son correctas, guarda una sesión que diga que es admin y redirecciona a la web de admin
+	//Si las claves son correctas, guarda una sesión que diga que es admin y redirecciona a la web de admin 
 
 } 
 
