@@ -322,7 +322,7 @@ function isAdmin(){
 }
 
 
-	print_r(shoot(1,'f876e5650f808e2a6add0a03cfb7a23d'));
+	//print_r(shoot(1,'f876e5650f808e2a6add0a03cfb7a23d'));
 	//echo addPlace(utf8_decode("Conserjería"),2) . "\n". addPlayer('tutida','666',true);
 	//generateQR("http://qea.me/shoot/". addPlace(utf8_decode("Conserjería"),2));
 	//generateQR("http://qea.me");
