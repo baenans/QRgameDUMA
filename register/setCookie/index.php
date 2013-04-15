@@ -1,7 +1,6 @@
 <?php
 //	-/register/index.php
 	$agent = $_SERVER['HTTP_USER_AGENT'];  
-	echo $agent;
 	if(!preg_match('/iPhone/i', $agent)){
 		include("../../functions.php");
 		setUserCookie(substr($_SERVER['QUERY_STRING'],1));
@@ -27,7 +26,10 @@
 			<h1>Abre el link en Safari</h1>
 			<h3>Abajo a mano derecha tienes el icono de Safari</h3>
 			<br>
-			<a class="btn btn-large btn-success" href="http://fran.local/juego/register/setCookie/forceRegister.php?code=<?php echo substr($_SERVER['QUERY_STRING'],1); ?>">Cuando abras SAFARI pincha aquí</a>
+			<?php
+				if(!strpbrk ('Mobile/10B329', $agent)) echo "<a class=\"btn btn-large btn-success\" href=\"http://fran.local/juego/register/setCookie/forceRegister.php?code=". substr($_SERVER['QUERY_STRING'],1) . ">HAZ CLICK AQUÍ</a>";
+			?>
+			
 			<hr>
 		</div>
 	</div>
