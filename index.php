@@ -15,15 +15,15 @@
 
 	<div class="container-narrow">
 
-		<div class="masthead">
+		<div class="masthead" style="clear:both">
+			<div class="logo">
+				<img src="img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3 class="muted">ETSI Informática</h3>
+			</div>
 			<ul class="nav nav-pills pull-right">
 				<li class="active"><a href="/">Inicio</a></li>
 				<li><a href="ranking/">Ránking</a></li>
 				<li><a href="about/">About</a></li>
 			</ul>
-			<div class="logo">
-				<img src="img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3 class="muted">ETSI Informática</h3>
-			</div>
 		</div>
 
 		<hr>
@@ -49,7 +49,7 @@
 			<div class="span6">
 				<h4>Requisitos para ganar</h4>
 				<ul>
-					<li>Necesitas conseguir al menos <strong>300 puntos</strong></li>
+					<li>Necesitas conseguir al menos <strong>500 puntos</strong></li>
 				</ul>
 			</div>
 		</div>

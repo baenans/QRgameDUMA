@@ -37,9 +37,11 @@ $thing	=	getInfoOf($code);
 <body>
 	<div class="container">
 		<div class="masthead">
-			<img src="../img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3 class="muted">ETSI Informática</h3>
+		 <div class="logo">
+        	<img src="../img/logoetsii.png" width="40px" height="auto" class="alignleft" style="margin-right:3px"><h3 class="muted">ETSI Informática</h3>
+     	 </div>	
 		</div>
-
+		<hr>
 		<div class="jumbotron">
 			<h1>Abre el link en Safari</h1>
 			<h3>Pulsa el el icono de Safari, abajo a la derecha</h3>
