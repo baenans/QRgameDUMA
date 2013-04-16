@@ -210,10 +210,10 @@ function setUserSession($code){
 	}
 }
 
-function controlUserSession(){
+function controlUserSession($redir=true){
 	session_start();
 	if (!isset($_SESSION['uid'])){
-		header("Location: ../");
+		if ($redir) header("Location: ../");
 	} 
 	return $_SESSION['uid'];
 }
@@ -255,7 +255,9 @@ function getPlayer($id){
 	$result=executeQuery("SELECT user, phone, twitter FROM players WHERE id=".$id);
 		if ($result->num_rows==1){
 			$object=$result->fetch_object();
-			$return= (object) array(	'type' 		=> 'user',
+			$return= (object) array(	
+						'id'		=> $id,
+						'type' 		=> 1,
 						'user' 		=> $object->user, 
 						'phone'		=> $object->phone,
 						'twitter'	=> $object->twitter,);
@@ -263,17 +265,26 @@ function getPlayer($id){
 	return $return;
 }
 
-function getPlace($id){
+function getPlace($id, $type){
 $return=-1;
-	$result=executeQuery("SELECT name FROM places WHERE id=".$id);
+	$result=executeQuery("SELECT name FROM places WHERE id=".$id. " AND type=". $type);
 		if ($result->num_rows==1){
 			$object=$result->fetch_object();
-			$return= (object) array('type' 		=> 'place',
+			$return= (object) array('type' 		=> $type,
 									'name' 		=> $object->name,);
 		}
 	return $return;
 }
 
+function whatAmIGonnaShoot($code){
+	$return=-1;
+	$result=executeQuery("SELECT type, id FROM codes WHERE code='".$code."'");
+	if($result->num_rows==1){
+		$object=$result->fetch_object();
+
+	}
+	return $return;
+}
 function shoot($uid,$code){
 	/*
 		Errores:	0: no hay error
@@ -297,7 +308,7 @@ function shoot($uid,$code){
 			$score=75;
 		} else {
 			//Si type!=1, es un lugar
-			$objectInfo=getPlace($object->id);
+			$objectInfo=getPlace($object->id, $object->type);
 			$score=($object->type==3?100:($object->type==2?25:($object->type==4?150:0)));
 		}
 
@@ -326,7 +337,7 @@ function calculateScoreOfUser($user) {
 	$totalScore = 0;
 
 	while ($aScore=$scores->fetch_object()){
-			$totalScore += $aScore;
+			$totalScore += $aScore->score;
 	}
 
 	return $totalScore;
@@ -357,6 +368,25 @@ function getAllPlaces(){
 	return $return;
 }
 
+function getInfoOf($code){
+	$return=-1;
+	$result=executeQuery("SELECT id, type FROM codes WHERE code='".$code."'");
+	$object=$result->fetch_object();
+	if ($object->type==1){
+		$return=getPlayer($object-> id);
+	} else {
+		$return=getPlace($object-> id, $object-> type);
+	}
+	return $return;
+}
+
+function getInfoOfShoots($uid){
+	$shoots = executeQuery("SELECT code FROM shoots WHERE user='".$uid."'");
+	while ($object=$shoots->fetch_object()){
+			$return[]=getInfoOf($object->code);
+	}
+	return $return;
+}
 function scoreOfAll(){
 
 	$players=getAllUsers();

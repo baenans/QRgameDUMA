@@ -5,7 +5,8 @@
     header("Location: ../");
   } 
   
-  $code=addPlayer($_POST['nick'],$_POST['telefono'],isset($_POST['twitter']));
+  if (isset($_POST['nick'])&&isset($_POST['telefono'])) 
+    $code=addPlayer($_POST['nick'],$_POST['telefono'],isset($_POST['twitter']));
 
   if ($code!=-1){
     $qr=generateQR($code,2,"../");

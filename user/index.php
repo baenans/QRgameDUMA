@@ -2,8 +2,7 @@
 //	-/user/index.php
 include("../functions.php");
   $user = getPlayer(controlUserSession());
-  echo "You are " . $user->user;
-//$user = "JohnSmith"; 
+  $disparos=getInfoOfShoots($user->id);
   ?>
 <html>
 <head>
@@ -27,7 +26,7 @@ include("../functions.php");
     </div>
 
     <hr>
-      <h1 style='text-align:center'><?php echo $user; ?></h1>
+      <h1 style='text-align:center'><?php echo $user->user; ?></h1>
       <br><br>
       <!--
 
@@ -56,11 +55,15 @@ include("../functions.php");
 
       <!-- Esto lo voy a hacer en guarro y lo pones bonito si puedes, @iamdanilopez -->
       <!-- El número en gande -->
-      <p align=center><font style='font-size:4.5em'>000</font><br><br>Puntos<br><br>
-      <div class='person shoot' style='text-align:center'>Has disparado a @talpersona</div>
-      <div class='stand shoot' style='text-align:center'>Has disparado al puesto de IAESTE</div>
+      <p align=center><font style='font-size:4.5em'><? echo calculateScoreOfUser($user->id); ?></font><br><br>Puntos<br><br>
+      <?php
+
+      foreach ($disparos as $thing) {
+        echo "<div class='person shoot' style='text-align:center'>Has disparado a ".($thing->id==1?($thing->twitter==1?"<a href='http://www.twitter.com/".$thing->user."'>@":"").$thing->user.($thing->twitter==1?"</a>":""):$thing->name)."</div>\n";
+      }
+      ?>
       <br><br>
-      <div class='motivacion' style='text-align:center'>Te quedan 000 puntos para conseguir nuestra camiseta / Ya puedes pasar por nuestro stand para conseguir nuestra camiseta</div>
+      <div class='motivacion' style='text-align:center'>Te quedan 0 puntos para conseguir nuestra camiseta / Ya puedes pasar por nuestro stand para conseguir nuestra camiseta</div>
      </p>
     <hr>
 
