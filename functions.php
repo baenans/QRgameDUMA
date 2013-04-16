@@ -191,6 +191,14 @@ function lookupCodeNoAlloc($type,$id){
 		return $return;
 }
 
+function getAllCodes(){
+		$result=executeQuery("SELECT * FROM `codes`");
+		while($object=$result->fetch_object()){
+			$return[]=$object;
+		}
+		return $return;
+}
+
 
 function whoIs($code){
 	$return=-1;

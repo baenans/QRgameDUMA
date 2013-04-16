@@ -14,6 +14,7 @@ $thing	=	getInfoOf($code);
 		shoot($user->id,$code);
 		header("Location: ../user/?id=".$thing->id."&type=".$thing->type);
 	} else {
+		$agent = $_SERVER['HTTP_USER_AGENT']; 
 		if(!preg_match('/iPhone/i', $agent)){
 			header("Location: ../");
 		}
