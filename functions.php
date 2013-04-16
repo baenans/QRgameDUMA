@@ -421,16 +421,33 @@ function eraseQRs($path="../"){
 	}
 }
 
+function showPerson($person){
+	if($person->twitter==1){	
+		$show="<a href='http://www.twitter.com/".$person->user."'>@". $person->user . "</a>";
+	} else {
+		$show=$person->user;
+	}
+	return $show;
+}
 
+function showPlace($place){
+	return $place->name;
+}
 /* AUTENTICACIÓN ADMINISTRADOR */
 
 function setAdmin($user,$pass){
-	//Si las claves son correctas, guarda una sesión que diga que es admin y redirecciona a la web de admin 
-
+	if($user==$GLOBALS['admin_user']&&$pass==$GLOBALS['admin_pass']){
+		session_start();
+		$_SESSION['admin']=true;
+	} 
 } 
 
 function isAdmin(){
 	//Busca si el usuario es administrador, y si no redirecciona a la web de login 	
+	session_start();
+	if((!isset($_SESSION['admin']))||($_SESSION['admin']!=true)){
+		header("Location: /admin/login");
+	}
 }
 
 

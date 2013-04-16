@@ -1,5 +1,8 @@
 <?php
 //	-/register/index.php
+if(isset($_POST['sent'])){
+  setAdmin($_POST['user',$_POST['pass');
+}
 ?>
 <!doctype html>
 <html lang="es">
@@ -54,8 +57,8 @@
 		<hr>
 		<form action="./" method="POST" class="form-signin">
 			<h2 class="form-signin-heading">Login de Admin</h2>
-			<input type="text" class="input-block-level" placeholder="Usuario" name="nick">
-			<input type="password" class="input-block-level" placeholder="Contraseña" name="telefono">
+			<input type="text" class="input-block-level" placeholder="Usuario" name="user">
+			<input type="password" class="input-block-level" placeholder="Contraseña" name="pass">
 			<button class="btn btn-large btn-primary" name="sent" value="true" type="submit">Acceder</button>
 		</form>
 	</div> <!-- /container -->

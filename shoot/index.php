@@ -18,8 +18,7 @@ if ($user!=-1){
 	*/
 ?>
 
-<?php print_r($thing); ?>
-<P align=center>Has disparado a <?php echo ($thing->id==1?($thing->twitter==1?"<a href='http://www.twitter.com/".$thing->user."'>@":"&nbsp;"). $thing-> user . ($thing->twitter==1?"</a>":" "):$thing->name); ?><br><br>
+<P align=center>Has disparado a <?php echo ($thing->type==1?showPerson($thing):showPlace($thing)); ?><br><br>
 
 
 Para confirmar, pulsa 
