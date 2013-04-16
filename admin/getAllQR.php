@@ -31,8 +31,10 @@ isAdmin();
 
 $allcodes=getAllCodes();
 foreach ($allcodes as $key => $code) {
-	$qr[$key]=generateQR($code->code,1,"../");
-	echo '<div class="code"><div class="expl">' . $code->type . " i" . $code->id . "</div><img src='".$qr[$key]."'></div>\n";
+	if ($code->type!=1){
+		$qr[$key]=generateQR($code->code,1,"../");
+		echo '<div class="code"><div class="expl">' . $code->type . " i" . $code->id . "</div><img src='".$qr[$key]."'></div>\n";
+	}
 }
 ?>
 

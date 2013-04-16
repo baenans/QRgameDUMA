@@ -12,6 +12,8 @@
   if ($code!=-1){
     $qr=generateQR($code,2,"../");
   }
+
+  $whatCode=getInfoOf($code);
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +40,7 @@
     <hr>
       <div class="jumbotron">
       <h1>¡<? echo (isset($_POST['twitter'])?"@":"") . $_POST['nick']; ?>!</h1>
-      <p class="lead">Ya casi estás registrado.<br>Solo te falta leer este código con tu lector QR.</p>
+      <p class="lead">Ya casi estás registrado.<br>Solo te falta leer este código con tu lector QR.<br><br>1 i<?php echo $whatCode->id; ?></p>
       <img src="<?php echo $qr; ?>">
     </div>
 
