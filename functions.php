@@ -427,11 +427,11 @@ function showPerson($person){
 	} else {
 		$show=$person->user;
 	}
-	return $show;
+	return utf8_encode($show);
 }
 
 function showPlace($place){
-	return $place->name;
+	return utf8_encode($place->name);
 }
 /* AUTENTICACIÓN ADMINISTRADOR */
 
@@ -447,7 +447,7 @@ function isAdmin(){
 	//Busca si el usuario es administrador, y si no redirecciona a la web de login 	
 	session_start();
 	if((!isset($_SESSION['admin']))||($_SESSION['admin']!=true)){
-		header("Location: /admin/login");
+		header("Location: ".$GLOBALS['gameurl']."/admin/login");
 	}
 }
 
