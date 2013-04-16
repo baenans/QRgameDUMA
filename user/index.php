@@ -30,7 +30,9 @@ include("../functions.php");
     </div>
 
     <hr>
-      <h1 style='text-align:center'><?php echo $user->user; ?></h1>
+
+    <div class="jumbotron">
+      <h2 style='text-align:center'><?php echo $user->user; ?></h1>
       <br><br>
       <!--
 
@@ -71,13 +73,14 @@ include("../functions.php");
 
         <?php
 
-        if($score>=300){
+        if($score>=500){
             echo "Ya puedes pasar por nuestro stand para recoger tu camiseta";
         } else {
-            echo "Aún te quedan ".(300-$score)." puntos para conseguir nuestra camiseta";
+            echo "Aún te quedan <b>".(500-$score)."</b> puntos para conseguir nuestra camiseta";
         }
         ?></div>
      </p>
+   </div>
     <hr>
 
 

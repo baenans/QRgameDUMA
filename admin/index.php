@@ -36,6 +36,7 @@ eraseQRs();
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>&nbsp;</th>
             <th>Nickname</th>
             <th>Teléfono</th>
           </tr>
@@ -46,7 +47,7 @@ eraseQRs();
           $users=getAllUsers();
           if (count($users)>0){
           	foreach($users as $row) {
-              echo "<tr><td>" . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> user."'>@".$row -> user."</a>":$row -> user) . "</td><td><a href='getQR.php?type=1&id=".$row->id."'>" . $row -> phone . "</a></td></tr>";
+              echo '<tr><td><a href="../register/q.php?id='.$row->id.'&type=1"><i class="icon-fullscreen"></i></a>&nbsp;1 i'.$row->id.'</td><td>' . ($row -> twitter?"<a href='http://www.twitter.com/".$row -> user."'>@".$row -> user."</a>":$row -> user) . "</td><td><a href='getQR.php?type=1&id=".$row->id."'>" . $row -> phone . "</a></td></tr>";
             }
           }
             
@@ -59,6 +60,7 @@ eraseQRs();
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>Código</th>
             <th>Nombre</th>
           </tr>
         </thead>
@@ -68,7 +70,7 @@ eraseQRs();
           	$places=getAllPlaces();
           	if(count($places)>0){
             	foreach(getAllPlaces() as $row) {
-              	echo "<tr><td><a href='getQR.php?type=".$row-> type."&id=".$row-> id."'>". utf8_encode($row -> name) . "</td></tr>";
+              	echo "<tr><td>".$row-> type." i".$row-> id. "</td><td><a href='getQR.php?type=".$row-> type."&id=".$row-> id."'>". utf8_encode($row -> name) . "</td></tr>";
             	}
             }
           ?>
