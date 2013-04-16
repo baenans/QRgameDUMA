@@ -20,6 +20,7 @@
 	<meta charset="UTF-8">
 	<title>Detectando...</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css">
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
