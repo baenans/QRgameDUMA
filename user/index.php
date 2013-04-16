@@ -73,10 +73,10 @@ include("../functions.php");
 
         <?php
 
-        if($score>=500){
+        if($score>=1000){
             echo "Ya puedes pasar por nuestro stand para recoger tu camiseta";
         } else {
-            echo "Aún te quedan <b>".(500-$score)."</b> puntos para conseguir nuestra camiseta";
+            echo "Aún te quedan <b>".(1000-$score)."</b> puntos para conseguir nuestra camiseta";
         }
         ?></div>
      </p>

@@ -31,6 +31,7 @@
 		<div class="jumbotron">
 			<h1>QR Challenge!</h1>
 			<p class="lead">Consigue puntos escaneando los códigos QR que hay repartidos por el pabellón durante la Jornada de Puertas Abiertas.</p>
+			<p class="lead">¡Acércate al puesto de la Escuela de Informática para inscribirte!<br></p>
 			<a class="btn btn-large btn-success" href="./getReader/">Obtener un lector de códigos QR</a>
 		</div>
 
@@ -49,7 +50,7 @@
 			<div class="span6">
 				<h4>Requisitos para ganar</h4>
 				<ul>
-					<li>Necesitas conseguir al menos <strong>500 puntos</strong></li>
+					<li>Necesitas conseguir al menos <strong>1000 puntos</strong></li>
 				</ul>
 			</div>
 		</div>

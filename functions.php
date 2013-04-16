@@ -298,9 +298,10 @@ function shoot($uid,$code){
 		Errores:	0: no hay error
 					1: código escaneado incorrecto
 					2: ya ha escaneado este código
+					3: no puedes dispararte a ti mismo
 	*/
 	$error=0;	//Presuponemos que no habrá un error
-
+	$execute=true;
 	//Obtenemos info del código escaneado
 	$result=executeQuery("SELECT type, id FROM codes WHERE code='".$code."'");
 
@@ -312,7 +313,12 @@ function shoot($uid,$code){
 		//Obtenemos la info adicional y asignamos una puntuación
 		if($object->type==1){
 			//Si type==1, es una persona
+			if($object->id==$uid){
+				$execute=false;
+				$error=3;
+			}
 			$objectInfo=getPlayer($object->id);
+
 			$score=75;
 		} else {
 			//Si type!=1, es un lugar
@@ -321,10 +327,12 @@ function shoot($uid,$code){
 		}
 
 			//Guardamos el disparo en la Base de Datos
+		if($execute){
 			if(!executeQuery("INSERT INTO `shoots` (`user` ,`code` ,`score`) VALUES ('".$uid."', '".$code."', '".$score."');")){
 				//Si no se ejecuta correctamente el query, devolvemos el error 2 (porque no se puede introducir una nueva fila en la DB)
 				$error=2;
 			}	
+		}
 		
 
 	} else {
