@@ -439,6 +439,7 @@ function setAdmin($user,$pass){
 	if($user==$GLOBALS['admin_user']&&$pass==$GLOBALS['admin_pass']){
 		session_start();
 		$_SESSION['admin']=true;
+		header("Location:../");
 	} 
 } 
 

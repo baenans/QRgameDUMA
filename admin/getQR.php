@@ -1,6 +1,7 @@
 <?php
 //	-/admin/index.php
 include("../functions.php");
+isAdmin();
 
 //Borramos los QR que hayan podido ser generados anteriormente
 eraseQRs();

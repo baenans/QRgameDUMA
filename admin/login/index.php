@@ -1,7 +1,8 @@
 <?php
 //	-/register/index.php
+include("../../functions.php");
 if(isset($_POST['sent'])){
-  setAdmin($_POST['user',$_POST['pass');
+  setAdmin($_POST['user'],$_POST['pass']);
 }
 ?>
 <!doctype html>

@@ -1,5 +1,6 @@
 <?php
-//	-/register/index.php
+include("../../functions.php");
+isAdmin();
 ?>
 <!doctype html>
 <html lang="en">

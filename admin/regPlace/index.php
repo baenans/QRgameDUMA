@@ -1,6 +1,7 @@
 <?php
 //	-/register/regPlace/index.php
 include("../../functions.php");
+isAdmin();
 
 if(isset($_POST['sent'])&&$_POST['name']!=""){
     addPlace($_POST['name'], $_POST['type']);

@@ -3,6 +3,11 @@
 $disparo=false;
 include("../functions.php");
 $code=substr($_SERVER['QUERY_STRING'],1);
+
+if($code==""){
+	header("Location: ../");
+}
+
 $user = getPlayer(controlUserSession(false));
 $thing=getInfoOf($code);
 
