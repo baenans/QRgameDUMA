@@ -133,7 +133,9 @@ function generateQR($code,$type=1,$whereAmI=""){
 
 function allocatePersonalCodes(){
 	$mysqli = conectaDB();
-	for ($id=1; $id <= 150; $id++) { 
+
+	//Esto hay que arreglarlo
+	for ($id=151; $id <= 220; $id++) { 
 		$code=generateCode($id+time());
 		$mysqli->query("INSERT INTO `codes` (`type` ,`id` ,`code`,`taken`) VALUES ('1', '".$id."', '".$code."', '0');");
 	}
