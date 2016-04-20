@@ -1,3 +1,11 @@
+**BEWARE: this project is DEPRECATED**
+
+The code is unmaintanable and hasn't been updated since we first created (first yr of uni?)… Feel free to reuse anything, but take into account that the project lacks of documentation/structure and even some files. Actually, it relies on different technologic presumptions that might have been also deprecated.
+
+Anyhow, am interested in developing a new game based on this one using Web Components. If you're also interested, just ping me through Twitter: @baenans
+
+Cheers!
+
 ***JUEGO QR PARA LA JORNADA DE PUERTAS ABIERTAS***
 
 
